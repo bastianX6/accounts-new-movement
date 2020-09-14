@@ -3,12 +3,32 @@
 
 import PackageDescription
 
+private var targets: [Target] = [
+    .target(
+        name: "NewMovement",
+        dependencies: [
+            "DataManagement",
+            "AccountsUI"
+        ]
+    ),
+]
+
+#if os(iOS)
+    targets.append(
+        .testTarget(
+            name: "NewMovementTests",
+            dependencies: ["NewMovement"]
+        )
+    )
+#endif
+
 let package = Package(
     name: "NewMovement",
+    defaultLocalization: "es",
     platforms: [
         .iOS(.v13),
         .tvOS(.v13),
-        .macOS(.v11),
+        .macOS(.v10_15),
         .watchOS(.v6)
     ],
     products: [
@@ -19,23 +39,9 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "DataManagement", url: "https://github.com/bastianX6/accounts-data-management.git", from: "1.0.0"),
+        .package(name: "DataManagement", url: "https://github.com/bastianX6/accounts-data-management.git", from: "1.0.1"),
         .package(name: "AccountsUI", url: "https://github.com/bastianX6/accounts-ui.git", from: "1.0.0"),
 
     ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "NewMovement",
-            dependencies: [
-                "DataManagement",
-                "AccountsUI"
-            ]
-        ),
-        .testTarget(
-            name: "NewMovementTests",
-            dependencies: ["NewMovement"]
-        ),
-    ]
+    targets: targets
 )
