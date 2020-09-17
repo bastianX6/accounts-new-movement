@@ -15,17 +15,16 @@ struct MovementTypeView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("¿Qué deseas agregar?")
+                Text(L10n.whatDoYouWantToAdd)
                     .font(.title)
                     .frame(minWidth: 0,
                            maxWidth: .infinity,
                            alignment: .center)
-                    .background(Color.systemBackground)
 
                 VStack {
                     MovementTypeCard(systemImageName: "bag.fill.badge.minus",
                                      imageTintColor: .purple,
-                                     title: "Gasto")
+                                     title: L10n.expedirure)
                         .frame(minWidth: 0,
                                maxWidth: .infinity,
                                alignment: .center)
@@ -33,11 +32,10 @@ struct MovementTypeView: View {
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        alignment: .center)
-                .background(Color.systemBackground)
                 VStack {
                     MovementTypeCard(systemImageName: "dollarsign.square.fill",
                                      imageTintColor: .indigo,
-                                     title: "Ingreso")
+                                     title: L10n.income)
                         .frame(minWidth: 0,
                                maxWidth: .infinity,
                                alignment: .center)
@@ -45,7 +43,6 @@ struct MovementTypeView: View {
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        alignment: .center)
-                .background(Color.systemBackground)
             }
         }
     }
@@ -56,6 +53,7 @@ struct MovementTypeView_Previews: PreviewProvider {
         Group {
             MovementTypeView()
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+                .environment(\.locale, Locale(identifier: "es"))
 
             MovementTypeView()
                 .environment(\.colorScheme, .light)
@@ -64,6 +62,7 @@ struct MovementTypeView_Previews: PreviewProvider {
                 .environment(\.sizeCategory, .large)
 
             MovementTypeView()
+                .background(Color.systemGray2)
                 .environment(\.colorScheme, .dark)
         }
     }

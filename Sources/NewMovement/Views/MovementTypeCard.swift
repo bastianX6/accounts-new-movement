@@ -5,14 +5,10 @@
 //  Created by Bastián Véliz Vega on 14-09-20.
 //
 
+import AccountsUI
 import Foundation
 import SwiftUI
 
-@available(
-    watchOS,
-    unavailable,
-    message: "MovementTypeCard is not available in watchOS"
-)
 struct MovementTypeCard: View {
     let systemImageName: String
     let imageTintColor: Color
@@ -35,24 +31,13 @@ struct MovementTypeCard: View {
         }
         .padding()
         .frame(minWidth: 0, maxWidth: .infinity)
-        .background(Color.systemBackground)
+        .background(Color.backgroundColor)
         .cornerRadius(10)
         .shadow(radius: 3)
     }
 
     private var image: some View {
-        #if os(macOS)
-            if #available(macOS 11, *) {
-                return AnyView(Image(systemName: self.systemImageName)
-                    .resizable())
-            } else {
-                return AnyView(Rectangle())
-            }
-
-        #else
-            return Image(systemName: self.systemImageName)
-                .resizable()
-        #endif
+        return Image.resizableImage(systemName: self.systemImageName)
     }
 }
 
@@ -61,9 +46,18 @@ struct MovementTypeCard_Previews: PreviewProvider {
         Group {
             VStack {
                 MovementTypeCard(systemImageName: "bag.fill.badge.minus",
-                                 imageTintColor: Color.indigo,
+                                 imageTintColor: .indigo,
                                  title: "Gasto con texto glfoñkfm")
             }
+            .environment(\.sizeCategory, .large)
+            .environment(\.colorScheme, .light)
+
+            VStack {
+                MovementTypeCard(systemImageName: "bag.fill.badge.minus",
+                                 imageTintColor: .indigo,
+                                 title: "Gasto con texto glfoñkfm")
+            }
+            .background(Color.systemGray6)
             .environment(\.sizeCategory, .large)
             .environment(\.colorScheme, .dark)
         }

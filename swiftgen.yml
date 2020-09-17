@@ -1,0 +1,5 @@
+strings:
+  inputs: Sources/NewMovement/Resources/es.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Sources/NewMovement/Localization/Strings.swift
