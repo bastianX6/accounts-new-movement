@@ -12,6 +12,9 @@ import SwiftUI
 struct MovementTypeView: View {
     @Environment(\.sizeCategory) var sizeCategory
 
+    var expeditureAction: () -> Void
+    var incomeAction: () -> Void
+
     var body: some View {
         ScrollView {
             VStack {
@@ -29,9 +32,7 @@ struct MovementTypeView: View {
                                maxWidth: .infinity,
                                alignment: .center)
                 }
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       alignment: .center)
+                .onTapGesture(perform: self.expeditureAction)
                 VStack {
                     MovementTypeCard(systemImageName: "dollarsign.square.fill",
                                      imageTintColor: .indigo,
@@ -40,9 +41,7 @@ struct MovementTypeView: View {
                                maxWidth: .infinity,
                                alignment: .center)
                 }
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       alignment: .center)
+                .onTapGesture(perform: self.incomeAction)
             }
         }
     }
@@ -51,17 +50,17 @@ struct MovementTypeView: View {
 struct MovementTypeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MovementTypeView()
+            MovementTypeView(expeditureAction: {}, incomeAction: {})
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
                 .environment(\.locale, Locale(identifier: "es"))
 
-            MovementTypeView()
+            MovementTypeView(expeditureAction: {}, incomeAction: {})
                 .environment(\.colorScheme, .light)
 
-            MovementTypeView()
+            MovementTypeView(expeditureAction: {}, incomeAction: {})
                 .environment(\.sizeCategory, .large)
 
-            MovementTypeView()
+            MovementTypeView(expeditureAction: {}, incomeAction: {})
                 .background(Color.systemGray2)
                 .environment(\.colorScheme, .dark)
         }
