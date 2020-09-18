@@ -8,16 +8,29 @@
 import DataManagement
 import SwiftUI
 
+/// New movement view
 public struct NewMovementView: View {
     private var dataModel: NewMovementViewDataModel
     private var movement: Movement?
 
+    /// Default initializer
+    /// - Parameters:
+    ///   - dataModel: data used to populate the view
+    ///   - movement: movement used to edit its data. Default value: `nil`
     public init(dataModel: NewMovementViewDataModel,
                 movement: Movement? = nil) {
         self.dataModel = dataModel
         self.movement = movement
     }
 
+    /**
+     View's body
+
+     View's body
+
+     - Important:
+        This view is only available in iOS
+     */
     public var body: some View {
         #if os(iOS)
             self.iOSView
