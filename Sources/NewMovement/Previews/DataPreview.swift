@@ -46,8 +46,8 @@ enum DataPreview {
         return model
     }
 
-    static func getData() -> NewMovementBaseManager {
-        return NewMovementBaseManager(model: self.viewModelWithData,
+    static func getData() -> NewMovementViewModel {
+        return NewMovementViewModel(model: self.viewModelWithData,
                                       stores: self.stores,
                                       categories: self.categories)
     }

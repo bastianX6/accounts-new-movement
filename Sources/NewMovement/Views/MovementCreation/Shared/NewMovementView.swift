@@ -11,7 +11,7 @@ public struct NewMovementView: View {
     public init() {}
     public var body: some View {
         #if os(iOS)
-            NewMovementViewiOS()
+            NewMovementViewiOS(viewModel: DataPreview.getData())
         #else
             Text("Hello, World!")
         #endif

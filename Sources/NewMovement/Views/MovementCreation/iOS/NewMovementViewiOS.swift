@@ -11,53 +11,83 @@ import SwiftUI
 @available(macOS, unavailable)
 @available(tvOS, unavailable)
 struct NewMovementViewiOS: View {
-    @ObservedObject var manager: NewMovementBaseManager = DataPreview.getData()
-    @State private var showSheet = false
-    @State private var isIncome = false
+    @ObservedObject var viewModel: NewMovementViewModel
 
-    init(isIncome: Bool = false) {
-        self.isIncome = isIncome
+    init(viewModel: NewMovementViewModel) {
+        self.viewModel = viewModel
     }
 
     var body: some View {
         NavigationView {
             MovementTypeView(expeditureAction: {
-                self.isIncome = false
-                self.showSheet.toggle()
+                self.viewModel.setState(.showSheet(isIncome: true))
             },
                              incomeAction: {
-                self.isIncome = true
-                self.showSheet.toggle()
+                self.viewModel.setState(.showSheet(isIncome: false))
             })
                 .navigationBarTitle(L10n.add)
-        }.sheet(isPresented: self.$showSheet,
+        }.sheet(isPresented: self.$viewModel.state.showSheet,
                 onDismiss: {
-                    self.showSheet = false
+                    self.viewModel.setState(.initial)
                 },
                 content: {
                     NavigationView {
-                        self.newMovementView
+                        ZStack {
+                            self.newMovementView
+                            self.loadingView
+                        }
                     }
         })
     }
 
     private var newMovementView: some View {
-        NewMovementBaseView(model: self.$manager.model,
-                            categories: self.manager.categories,
-                            stores: self.manager.stores)
-            .navigationBarTitle(self.isIncome ? L10n.newIncome : L10n.newExpediture)
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.showSheet = false
-                }, label: {
-                    Text(L10n.cancel)
-                }), trailing: Button(action: {
-                    // TODO: Save expediture in DB
-                    print("model: \(String(describing: self.manager.model))")
-                    self.showSheet = false
-                }, label: {
-                    Text(L10n.save).bold()
-            }))
+        NewMovementBaseView(model: self.$viewModel.model,
+                            categories: self.viewModel.categories,
+                            stores: self.viewModel.stores)
+            .navigationBarTitle(self.viewModel.state.navigationBarTitle)
+            .navigationBarItems(leading: self.cancelButton,
+                                trailing: self.saveButton)
+    }
+
+    // MARK: - Navigation bar buttons
+
+    private var cancelButton: some View {
+        Button {
+            self.viewModel.setState(.initial)
+        } label: {
+            Text(L10n.cancel)
+        }
+        .disabled(self.viewModel.state.showLoading)
+    }
+
+    private var saveButton: some View {
+        Button {
+            self.viewModel.setState(.saving)
+        } label: {
+            Text(L10n.save).bold()
+        }
+        .disabled(self.viewModel.state.showLoading)
+    }
+
+    // MARK: - Loading view
+
+    private var loadingView: some View {
+        VStack {
+            if self.viewModel.state.showLoading {
+                VStack {
+                    if #available(iOS 14.0, *) {
+                        ProgressView()
+                    } else {
+                        Text("Saving")
+                    }
+                }
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 0,
+                       maxHeight: .infinity)
+                .background(Color.backgroundColor.opacity(0.5))
+            }
+        }
     }
 }
 
@@ -66,6 +96,6 @@ struct NewMovementViewiOS: View {
 @available(tvOS, unavailable)
 struct NewMovementViewiOS_Previews: PreviewProvider {
     static var previews: some View {
-        NewMovementViewiOS()
+        NewMovementViewiOS(viewModel: DataPreview.getData())
     }
 }
