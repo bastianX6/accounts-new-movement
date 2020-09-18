@@ -19,13 +19,12 @@ struct NewMovementViewiOS: View {
 
     var body: some View {
         NavigationView {
-            MovementTypeView(expeditureAction: {
+            MovementTypeView {
                 self.viewModel.setState(.showSheet(isIncome: true))
-            },
-                             incomeAction: {
+            } incomeAction: {
                 self.viewModel.setState(.showSheet(isIncome: false))
-            })
-                .navigationBarTitle(L10n.add)
+            }
+            .navigationBarTitle(L10n.add)
         }.sheet(isPresented: self.$viewModel.state.showSheet,
                 onDismiss: {
                     self.viewModel.setState(.initial)
@@ -63,6 +62,7 @@ struct NewMovementViewiOS: View {
     private var saveButton: some View {
         Button {
             self.viewModel.setState(.saving)
+            self.viewModel.state.saveAction()
         } label: {
             Text(L10n.save).bold()
         }
@@ -96,6 +96,6 @@ struct NewMovementViewiOS: View {
 @available(tvOS, unavailable)
 struct NewMovementViewiOS_Previews: PreviewProvider {
     static var previews: some View {
-        NewMovementViewiOS(viewModel: DataPreview.getData())
+        NewMovementViewiOS(viewModel: DataPreview.viewModel)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import DataManagement
 
 class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
@@ -14,24 +15,29 @@ class NewMovementViewModel: ObservableObject {
     @Published var state: NewMovementViewState = NewMovementInitialState()
 
     private lazy var initialState: NewMovementViewState = NewMovementInitialState()
-    private lazy var showSheetState: NewMovementViewState = NewMovementShowSheetState(manager: self)
-    private lazy var savingState: NewMovementViewState = NewMovementSavingState(manager: self)
-    private lazy var errorState: NewMovementViewState = NewMovementErrorState(manager: self)
+    private lazy var showSheetState: NewMovementViewState = NewMovementShowSheetState(viewModel: self)
+    private lazy var savingState: NewMovementViewState = NewMovementSavingState(viewModel: self)
+    private lazy var errorState: NewMovementViewState = NewMovementErrorState(viewModel: self)
+
+    private var dataSource: DataSourceModify
 
     let stores: [CategoryStoreModel]
     let categories: [CategoryStoreModel]
 
     init(model: NewMovementBaseModel,
+         dataSource: DataSourceModify,
          stores: [CategoryStoreModel],
          categories: [CategoryStoreModel]) {
         self.model = model
-
+        self.dataSource = dataSource
         self.stores = stores
         self.categories = categories
     }
 
-    init(stores: [CategoryStoreModel],
+    init(dataSource: DataSourceModify,
+         stores: [CategoryStoreModel],
          categories: [CategoryStoreModel]) {
+        self.dataSource = dataSource
         self.stores = stores
         self.categories = categories
 
@@ -57,5 +63,10 @@ class NewMovementViewModel: ObservableObject {
         case .error:
             self.state = self.showSheetState
         }
+    }
+
+    func saveMovement() -> AnyPublisher<Void, Error> {
+        let movement = NewMovementAdapter(model: self.model)
+        return self.dataSource.save(movement: movement)
     }
 }

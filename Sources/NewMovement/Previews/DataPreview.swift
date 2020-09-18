@@ -5,6 +5,7 @@
 //  Created by Bastián Véliz Vega on 17-09-20.
 //
 
+import DataManagement
 import Foundation
 
 enum DataPreview {
@@ -27,12 +28,12 @@ enum DataPreview {
         return array
     }
 
-    static var viewModel: NewMovementBaseModel {
+    static var model: NewMovementBaseModel {
         return NewMovementBaseModel(currentStore: self.storeId,
                                     currentCategory: self.categoryId)
     }
 
-    static var viewModelWithData: NewMovementBaseModel {
+    static var modelWithData: NewMovementBaseModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         let date = dateFormatter.date(from: "2018-02-02") ?? Date()
@@ -46,9 +47,20 @@ enum DataPreview {
         return model
     }
 
-    static func getData() -> NewMovementViewModel {
-        return NewMovementViewModel(model: self.viewModelWithData,
-                                      stores: self.stores,
-                                      categories: self.categories)
+    static var viewModel: NewMovementViewModel {
+        return NewMovementViewModel(model: self.modelWithData,
+                                    dataSource: self.dataSource,
+                                    stores: self.stores,
+                                    categories: self.categories)
+    }
+
+    static var dataSource: DataSourceModify {
+        return MovementPreview()
+    }
+
+    static var dataModel: NewMovementViewDataModel {
+        return NewMovementViewDataModel(dataSource: self.dataSource,
+                                        stores: self.stores,
+                                        categories: self.categories)
     }
 }

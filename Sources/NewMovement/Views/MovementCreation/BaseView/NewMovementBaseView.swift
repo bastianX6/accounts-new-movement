@@ -82,7 +82,7 @@ struct NewMovementBaseView: View {
 }
 
 struct NewMovementBaseView_Previews: PreviewProvider {
-    @ObservedObject static var manager: NewMovementViewModel = DataPreview.getData()
+    @ObservedObject static var manager: NewMovementViewModel = DataPreview.viewModel
 
     static var previews: some View {
         Group {

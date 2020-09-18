@@ -5,7 +5,10 @@
 //  Created by Bastián Véliz Vega on 18-09-20.
 //
 
+import Combine
 import Foundation
+
+// MARK: - State definition
 
 enum NewMovementViewStateEnum {
     case initial
@@ -24,6 +27,8 @@ protocol NewMovementViewState: AnyObject {
     func cancelAction()
 }
 
+// MARK: - States implementation
+
 class NewMovementInitialState: NewMovementViewState {
     var isIncome: Bool = false
     var showSheet: Bool = false
@@ -34,10 +39,10 @@ class NewMovementInitialState: NewMovementViewState {
 }
 
 class NewMovementShowSheetState: NewMovementViewState {
-    private weak var manager: NewMovementViewModel?
+    private weak var viewModel: NewMovementViewModel?
 
-    init(manager: NewMovementViewModel?) {
-        self.manager = manager
+    init(viewModel: NewMovementViewModel?) {
+        self.viewModel = viewModel
     }
 
     var isIncome: Bool = false
@@ -48,6 +53,7 @@ class NewMovementShowSheetState: NewMovementViewState {
     }
 
     func saveAction() {
+        self.viewModel?.setState(.saving)
         // TODO: Save action
         /*
          - Check data
@@ -57,15 +63,17 @@ class NewMovementShowSheetState: NewMovementViewState {
     }
 
     func cancelAction() {
-        self.manager?.setState(.initial)
+        self.viewModel?.setState(.initial)
     }
 }
 
 class NewMovementSavingState: NewMovementViewState {
-    private weak var manager: NewMovementViewModel?
+    private weak var viewModel: NewMovementViewModel?
 
-    init(manager: NewMovementViewModel?) {
-        self.manager = manager
+    var cancellables: [Cancellable] = []
+
+    init(viewModel: NewMovementViewModel?) {
+        self.viewModel = viewModel
     }
 
     var isIncome: Bool = false
@@ -76,22 +84,30 @@ class NewMovementSavingState: NewMovementViewState {
     }
 
     func saveAction() {
-        // TODO: Saving action
-        /*
-         - Wait for save result
-           - If save is correct -> transition to initial state
-           - Else -> Transition to error state
-         */
+        self.cancellables.removeAll()
+        guard let viewModel = self.viewModel else { return }
+        let cancellable = viewModel.saveMovement().sink(receiveCompletion: { [weak self] completion in
+            guard let strongSelf = self else { return }
+            switch completion {
+            case .finished:
+                strongSelf.viewModel?.setState(.initial)
+            case let .failure(error):
+                print("Save movement error: \(String(describing: error))")
+                strongSelf.viewModel?.setState(.error)
+            }
+        }, receiveValue: {})
+
+        self.cancellables.append(cancellable)
     }
 
     func cancelAction() {}
 }
 
 class NewMovementErrorState: NewMovementViewState {
-    private weak var manager: NewMovementViewModel?
+    private weak var viewModel: NewMovementViewModel?
 
-    init(manager: NewMovementViewModel?) {
-        self.manager = manager
+    init(viewModel: NewMovementViewModel?) {
+        self.viewModel = viewModel
     }
 
     var isIncome: Bool = false
@@ -104,6 +120,6 @@ class NewMovementErrorState: NewMovementViewState {
     func saveAction() {}
 
     func cancelAction() {
-        self.manager?.setState(.initial)
+        self.viewModel?.setState(.initial)
     }
 }

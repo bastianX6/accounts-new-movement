@@ -10,6 +10,7 @@ import DataManagement
 import Foundation
 
 class NewMovementBaseModel: ObservableObject {
+    var id: UUID
     var title: String
     var date: Date
     var amount: NSNumber
@@ -17,12 +18,14 @@ class NewMovementBaseModel: ObservableObject {
     var currentStore: UUID
     var currentCategory: UUID
 
-    init(title: String = "",
+    init(id: UUID = UUID(),
+         title: String = "",
          date: Date = Date(),
          amount: NSNumber = 0,
          comments: String = "",
          currentStore: UUID,
          currentCategory: UUID) {
+        self.id = id
         self.title = title
         self.date = date
         self.amount = amount

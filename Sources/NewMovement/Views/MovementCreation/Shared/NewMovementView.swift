@@ -5,21 +5,49 @@
 //  Created by Bastián Véliz Vega on 17-09-20.
 //
 
+import DataManagement
 import SwiftUI
 
 public struct NewMovementView: View {
-    public init() {}
+    private var dataModel: NewMovementViewDataModel
+    private var movement: Movement?
+
+    public init(dataModel: NewMovementViewDataModel,
+                movement: Movement? = nil) {
+        self.dataModel = dataModel
+        self.movement = movement
+    }
+
     public var body: some View {
         #if os(iOS)
-            NewMovementViewiOS(viewModel: DataPreview.getData())
+            self.iOSView
         #else
             Text("Hello, World!")
         #endif
     }
+
+    #if os(iOS)
+        private var iOSView: some View {
+            let viewModel: NewMovementViewModel
+            if let movement = self.movement {
+                let model = NewMovementBaseModel(movement: movement)
+                viewModel = NewMovementViewModel(model: model,
+                                                 dataSource: self.dataModel.dataSource,
+                                                 stores: self.dataModel.stores,
+                                                 categories: self.dataModel.categories)
+
+            } else {
+                viewModel = NewMovementViewModel(dataSource: self.dataModel.dataSource,
+                                                 stores: self.dataModel.stores,
+                                                 categories: self.dataModel.categories)
+            }
+            return NewMovementViewiOS(viewModel: viewModel)
+        }
+    #endif
 }
 
 struct NewMovementView_Previews: PreviewProvider {
     static var previews: some View {
-        NewMovementView()
+        NewMovementView(dataModel: DataPreview.dataModel)
     }
 }
