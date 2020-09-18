@@ -33,9 +33,9 @@ public struct NewMovementView: View {
      */
     public var body: some View {
         #if os(iOS)
-            self.iOSView
+            return self.iOSView.eraseToAnyView()
         #else
-            Text("Hello, World!")
+            return Text("Hello, World!").eraseToAnyView()
         #endif
     }
 
