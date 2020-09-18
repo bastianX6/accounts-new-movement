@@ -9,6 +9,15 @@
           "revision": "68ffeb7777495e6d23b30320719182a0ea59ec29",
           "version": "1.0.1"
         }
+      },
+      {
+        "package": "AccountsUI",
+        "repositoryURL": "https://github.com/bastianX6/accounts-ui.git",
+        "state": {
+          "branch": null,
+          "revision": "b3535865104734f3a5ffe3ce6fae21d16d68dad3",
+          "version": "1.0.1"
+        }
       }
     ]
   },

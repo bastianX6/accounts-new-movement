@@ -40,8 +40,12 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "DataManagement", url: "https://github.com/bastianX6/accounts-data-management.git", from: "1.0.1"),
-        .package(name: "AccountsUI", path: "../accounts-ui"),
+        .package(name: "DataManagement",
+                 url: "https://github.com/bastianX6/accounts-data-management.git",
+                 from: "1.0.1"),
+        .package(name: "AccountsUI",
+                 url: "https://github.com/bastianX6/accounts-ui.git",
+                 from: "1.0.1"),
 
     ],
     targets: targets
