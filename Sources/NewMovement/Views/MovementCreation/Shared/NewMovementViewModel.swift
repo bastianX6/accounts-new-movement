@@ -13,7 +13,7 @@ import Foundation
 class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
 
-    @Published var model: NewMovementBaseModel
+    @Published var model: NewMovementView.DataModel
     @Published var state: NewMovementViewState = NewMovementInitialState()
 
     private lazy var initialState: NewMovementViewState = NewMovementInitialState()
@@ -35,7 +35,7 @@ class NewMovementViewModel: ObservableObject {
         return self.isIncome ? self.incomeData.categories : self.expeditureData.categories
     }
 
-    init(model: NewMovementBaseModel,
+    init(model: NewMovementView.DataModel,
          dataSource: DataSourceModify,
          incomeData: NewMovementResources,
          expeditureData: NewMovementResources) {
@@ -51,7 +51,7 @@ class NewMovementViewModel: ObservableObject {
         self.dataSource = dataSource
         self.incomeData = incomeData
         self.expeditureData = expeditureData
-        self.model = NewMovementBaseModel(currentStore: UUID(),
+        self.model = NewMovementView.DataModel(currentStore: UUID(),
                                           currentCategory: UUID())
     }
 
@@ -63,7 +63,7 @@ class NewMovementViewModel: ObservableObject {
             self.isIncome = isIncome
             if let currentStore = self.stores.first?.id,
                 let currentCategory = self.categories.first?.id {
-                self.model = NewMovementBaseModel(currentStore: currentStore,
+                self.model = NewMovementView.DataModel(currentStore: currentStore,
                                                   currentCategory: currentCategory)
             } else {
                 fatalError("Can't init NewMovementViewModel with empty store and category arrays")

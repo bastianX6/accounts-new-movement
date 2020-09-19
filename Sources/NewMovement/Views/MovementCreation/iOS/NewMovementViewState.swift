@@ -22,6 +22,7 @@ protocol NewMovementViewState: AnyObject {
     var showSheet: Bool { get set }
     var showLoading: Bool { get }
     var navigationBarTitle: String { get }
+    var movementDetailTitle: String { get }
 
     func saveAction()
     func cancelAction()
@@ -34,6 +35,7 @@ class NewMovementInitialState: NewMovementViewState {
     var showSheet: Bool = false
     let showLoading: Bool = false
     let navigationBarTitle: String = ""
+    let movementDetailTitle: String = ""
     func saveAction() {}
     func cancelAction() {}
 }
@@ -50,6 +52,10 @@ class NewMovementShowSheetState: NewMovementViewState {
     let showLoading: Bool = false
     var navigationBarTitle: String {
         return self.isIncome ? L10n.newIncome : L10n.newExpediture
+    }
+
+    var movementDetailTitle: String {
+        return self.isIncome ? L10n.incomeDetails : L10n.expeditureDetails
     }
 
     func saveAction() {
@@ -81,6 +87,10 @@ class NewMovementSavingState: NewMovementViewState {
     let showLoading: Bool = true
     var navigationBarTitle: String {
         return self.isIncome ? L10n.newIncome : L10n.newExpediture
+    }
+
+    var movementDetailTitle: String {
+        return self.isIncome ? L10n.incomeDetails : L10n.expeditureDetails
     }
 
     func saveAction() {
@@ -115,6 +125,10 @@ class NewMovementErrorState: NewMovementViewState {
     let showLoading: Bool = false
     var navigationBarTitle: String {
         return self.isIncome ? L10n.newIncome : L10n.newExpediture
+    }
+
+    var movementDetailTitle: String {
+        return self.isIncome ? L10n.incomeDetails : L10n.expeditureDetails
     }
 
     func saveAction() {}

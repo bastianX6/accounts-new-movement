@@ -29,17 +29,17 @@ enum DataPreview {
         return array
     }
 
-    static var model: NewMovementBaseModel {
-        return NewMovementBaseModel(currentStore: self.storeId,
+    static var model: NewMovementView.DataModel {
+        return NewMovementView.DataModel(currentStore: self.storeId,
                                     currentCategory: self.categoryId)
     }
 
-    static var modelWithData: NewMovementBaseModel {
+    static var modelWithData: NewMovementView.DataModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         let date = dateFormatter.date(from: "2018-02-02") ?? Date()
 
-        let model = NewMovementBaseModel(title: "A title",
+        let model = NewMovementView.DataModel(title: "A title",
                                          date: date,
                                          amount: 150_000,
                                          comments: "Comments :)",
@@ -71,5 +71,12 @@ enum DataPreview {
         return NewMovementViewDataModel(dataSource: self.dataSource,
                                         incomeData: self.incomeData,
                                         expeditureData: self.expeditureData)
+    }
+
+    static func baseViewDataModel(isIncome: Bool) -> NewMovementView.DataResources {
+        return NewMovementView.DataResources(categories: self.categories,
+                                        stores: self.stores,
+                                        customDataSectionTitle: "Custom data section title",
+                                        isIncome: isIncome)
     }
 }

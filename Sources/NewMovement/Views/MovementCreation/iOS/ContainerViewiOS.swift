@@ -1,5 +1,5 @@
 //
-//  NewMovementView.swift
+//  ContainerViewiOS.swift
 //
 //
 //  Created by Bastián Véliz Vega on 17-09-20.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 #if os(iOS)
-    struct NewMovementViewiOS: View {
+    struct ContainerViewiOS: View {
         @ObservedObject var viewModel: NewMovementViewModel
 
         init(viewModel: NewMovementViewModel) {
@@ -38,9 +38,13 @@ import SwiftUI
         }
 
         private var newMovementView: some View {
-            NewMovementBaseView(model: self.$viewModel.model,
-                                categories: self.viewModel.categories,
-                                stores: self.viewModel.stores)
+            let dataResources = NewMovementView.DataResources(
+                categories: self.viewModel.categories,
+                stores: self.viewModel.stores, customDataSectionTitle: self.viewModel.state.movementDetailTitle,
+                isIncome: self.viewModel.state.isIncome
+            )
+            return NewMovementView(model: self.$viewModel.model,
+                                   dataResources: dataResources)
                 .navigationBarTitle(self.viewModel.state.navigationBarTitle)
                 .navigationBarItems(leading: self.cancelButton,
                                     trailing: self.saveButton)
@@ -89,9 +93,9 @@ import SwiftUI
         }
     }
 
-    struct NewMovementViewiOS_Previews: PreviewProvider {
+    struct ContainerViewiOS_Previews: PreviewProvider {
         static var previews: some View {
-            NewMovementViewiOS(viewModel: DataPreview.viewModel)
+            ContainerViewiOS(viewModel: DataPreview.viewModel)
         }
     }
 

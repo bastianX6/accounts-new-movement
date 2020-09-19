@@ -32,6 +32,8 @@ internal enum L10n {
   internal static let expeditureDetails = L10n.tr("Localizable", "Expediture details")
   /// Ingreso
   internal static let income = L10n.tr("Localizable", "Income")
+  /// Detalle del ingreso
+  internal static let incomeDetails = L10n.tr("Localizable", "Income details")
   /// Compra en cuotas
   internal static let multiPaymentMovement = L10n.tr("Localizable", "Multi-payment movement")
   /// Nuevo gasto
@@ -58,8 +60,7 @@ internal enum L10n {
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, tableName: table, bundle: BundleToken.bundle, value: "", comment: "")
-//    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }

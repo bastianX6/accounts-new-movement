@@ -1,5 +1,5 @@
 //
-//  NewMovementView.swift
+//  ContainerView.swift
 //
 //
 //  Created by Bastián Véliz Vega on 17-09-20.
@@ -9,7 +9,7 @@ import DataManagement
 import SwiftUI
 
 /// New movement view
-public struct NewMovementView: View {
+public struct ContainerView: View {
     private var dataModel: NewMovementViewDataModel
     private var movement: Movement?
 
@@ -43,7 +43,7 @@ public struct NewMovementView: View {
         private var iOSView: some View {
             let viewModel: NewMovementViewModel
             if let movement = self.movement {
-                let model = NewMovementBaseModel(movement: movement)
+                let model = NewMovementView.DataModel(movement: movement)
                 viewModel = NewMovementViewModel(model: model,
                                                  dataSource: self.dataModel.dataSource,
                                                  incomeData: self.dataModel.incomeData,
@@ -54,13 +54,13 @@ public struct NewMovementView: View {
                                                  incomeData: self.dataModel.incomeData,
                                                  expeditureData: self.dataModel.expeditureData)
             }
-            return NewMovementViewiOS(viewModel: viewModel)
+            return ContainerViewiOS(viewModel: viewModel)
         }
     #endif
 }
 
 struct NewMovementView_Previews: PreviewProvider {
     static var previews: some View {
-        NewMovementView(dataModel: DataPreview.dataModel)
+        ContainerView(dataModel: DataPreview.dataModel)
     }
 }
