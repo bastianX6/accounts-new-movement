@@ -46,13 +46,13 @@ public struct NewMovementView: View {
                 let model = NewMovementBaseModel(movement: movement)
                 viewModel = NewMovementViewModel(model: model,
                                                  dataSource: self.dataModel.dataSource,
-                                                 stores: self.dataModel.stores,
-                                                 categories: self.dataModel.categories)
+                                                 incomeData: self.dataModel.incomeData,
+                                                 expeditureData: self.dataModel.expeditureData)
 
             } else {
                 viewModel = NewMovementViewModel(dataSource: self.dataModel.dataSource,
-                                                 stores: self.dataModel.stores,
-                                                 categories: self.dataModel.categories)
+                                                 incomeData: self.dataModel.incomeData,
+                                                 expeditureData: self.dataModel.expeditureData)
             }
             return NewMovementViewiOS(viewModel: viewModel)
         }

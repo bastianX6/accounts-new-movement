@@ -8,6 +8,7 @@
 import AccountsUI
 import Combine
 import DataManagement
+import Foundation
 
 class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
@@ -21,34 +22,37 @@ class NewMovementViewModel: ObservableObject {
     private lazy var errorState: NewMovementViewState = NewMovementErrorState(viewModel: self)
 
     private var dataSource: DataSourceModify
+    private var isIncome: Bool = false
 
-    let stores: [CategoryStoreModel]
-    let categories: [CategoryStoreModel]
+    private let incomeData: NewMovementResources
+    private let expeditureData: NewMovementResources
+
+    var stores: [CategoryStoreModel] {
+        return self.isIncome ? self.incomeData.stores : self.expeditureData.stores
+    }
+
+    var categories: [CategoryStoreModel] {
+        return self.isIncome ? self.incomeData.categories : self.expeditureData.categories
+    }
 
     init(model: NewMovementBaseModel,
          dataSource: DataSourceModify,
-         stores: [CategoryStoreModel],
-         categories: [CategoryStoreModel]) {
+         incomeData: NewMovementResources,
+         expeditureData: NewMovementResources) {
         self.model = model
         self.dataSource = dataSource
-        self.stores = stores
-        self.categories = categories
+        self.incomeData = incomeData
+        self.expeditureData = expeditureData
     }
 
     init(dataSource: DataSourceModify,
-         stores: [CategoryStoreModel],
-         categories: [CategoryStoreModel]) {
+         incomeData: NewMovementResources,
+         expeditureData: NewMovementResources) {
         self.dataSource = dataSource
-        self.stores = stores
-        self.categories = categories
-
-        if let currentStore = stores.first?.id,
-            let currentCategory = categories.first?.id {
-            self.model = NewMovementBaseModel(currentStore: currentStore,
-                                              currentCategory: currentCategory)
-        } else {
-            fatalError("Can't init NewMovementViewModel with empty store and category arrays")
-        }
+        self.incomeData = incomeData
+        self.expeditureData = expeditureData
+        self.model = NewMovementBaseModel(currentStore: UUID(),
+                                          currentCategory: UUID())
     }
 
     func setState(_ state: NewMovementViewStateEnum) {
@@ -56,6 +60,14 @@ class NewMovementViewModel: ObservableObject {
         case .initial:
             self.state = self.initialState
         case let .showSheet(isIncome):
+            self.isIncome = isIncome
+            if let currentStore = self.stores.first?.id,
+                let currentCategory = self.categories.first?.id {
+                self.model = NewMovementBaseModel(currentStore: currentStore,
+                                                  currentCategory: currentCategory)
+            } else {
+                fatalError("Can't init NewMovementViewModel with empty store and category arrays")
+            }
             self.showSheetState.showSheet = true
             self.showSheetState.isIncome = isIncome
             self.state = self.showSheetState

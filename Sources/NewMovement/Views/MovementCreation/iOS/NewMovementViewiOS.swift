@@ -18,9 +18,9 @@ import SwiftUI
         var body: some View {
             NavigationView {
                 MovementTypeView {
-                    self.viewModel.setState(.showSheet(isIncome: true))
-                } incomeAction: {
                     self.viewModel.setState(.showSheet(isIncome: false))
+                } incomeAction: {
+                    self.viewModel.setState(.showSheet(isIncome: true))
                 }
                 .navigationBarTitle(L10n.add)
             }.sheet(isPresented: self.$viewModel.state.showSheet,

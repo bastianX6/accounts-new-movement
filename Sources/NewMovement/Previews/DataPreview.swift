@@ -48,11 +48,19 @@ enum DataPreview {
         return model
     }
 
+    static var incomeData: NewMovementResources {
+        return NewMovementResources(categories: self.categories, stores: self.stores)
+    }
+
+    static var expeditureData: NewMovementResources {
+        return NewMovementResources(categories: self.categories, stores: self.stores)
+    }
+
     static var viewModel: NewMovementViewModel {
         return NewMovementViewModel(model: self.modelWithData,
                                     dataSource: self.dataSource,
-                                    stores: self.stores,
-                                    categories: self.categories)
+                                    incomeData: self.incomeData,
+                                    expeditureData: self.expeditureData)
     }
 
     static var dataSource: DataSourceModify {
@@ -61,7 +69,7 @@ enum DataPreview {
 
     static var dataModel: NewMovementViewDataModel {
         return NewMovementViewDataModel(dataSource: self.dataSource,
-                                        stores: self.stores,
-                                        categories: self.categories)
+                                        incomeData: self.incomeData,
+                                        expeditureData: self.expeditureData)
     }
 }

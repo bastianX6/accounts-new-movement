@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NewMovementView Structure Reference</title>
+    <title>CategoryStoreModel Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/NewMovementView" class="dashAnchor"></a>
-    <a title="NewMovementView Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/CategoryStoreModel" class="dashAnchor"></a>
+    <a title="CategoryStoreModel Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        NewMovementView Structure Reference
+        CategoryStoreModel Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -57,15 +57,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NewMovementView</h1>
+            <h1>CategoryStoreModel</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NewMovementView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CategoryStoreModel</span> <span class="p">:</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
-            <p>New movement view</p>
+            <p>Struct used to list categories and stores</p>
 
           </section>
           <section class="section task-group-section">
@@ -74,9 +74,63 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11NewMovement0aB4ViewV9dataModel8movementAcA0abc4DataE0V_0G10Management0B0_pSgtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(dataModel:movement:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11NewMovement0aB4ViewV9dataModel8movementAcA0abc4DataE0V_0G10Management0B0_pSgtcfc">init(dataModel:<wbr>movement:<wbr>)</a>
+                    <a name="/s:11NewMovement18CategoryStoreModelV4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11NewMovement18CategoryStoreModelV4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Category / Store name</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11NewMovement18CategoryStoreModelV2id10Foundation4UUIDVvp"></a>
+                    <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11NewMovement18CategoryStoreModelV2id10Foundation4UUIDVvp">id</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Category / Store id</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">UUID</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11NewMovement18CategoryStoreModelV4name2idACSS_10Foundation4UUIDVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:id:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11NewMovement18CategoryStoreModelV4name2idACSS_10Foundation4UUIDVtcfc">init(name:<wbr>id:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -91,8 +145,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">dataModel</span><span class="p">:</span> <span class="kt"><a href="../Structs/NewMovementViewDataModel.html">NewMovementViewDataModel</a></span><span class="p">,</span>
-            <span class="nv">movement</span><span class="p">:</span> <span class="kt">Movement</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">UUID</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -103,63 +156,29 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>dataModel</em>
+                                <em>name</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>data used to populate the view</p>
+                                  <p>category / Store name</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>movement</em>
+                                <em>id</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>movement used to edit its data. Default value: <code>nil</code></p>
+                                  <p>category / Store id</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11NewMovement0aB4ViewV4bodyQrvp"></a>
-                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11NewMovement0aB4ViewV4bodyQrvp">body</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>View&rsquo;s body</p>
-
-<p>View&rsquo;s body</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
-    This view is only available in iOS
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="n">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>

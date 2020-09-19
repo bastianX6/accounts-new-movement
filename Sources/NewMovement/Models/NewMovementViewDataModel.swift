@@ -5,26 +5,25 @@
 //  Created by Bastián Véliz Vega on 18-09-20.
 //
 
-import AccountsUI
 import DataManagement
 import Foundation
 
 /// Contains all the data required by NewMovementView
 public struct NewMovementViewDataModel {
     let dataSource: DataSourceModify
-    let stores: [CategoryStoreModel]
-    let categories: [CategoryStoreModel]
+    let incomeData: NewMovementResources
+    let expeditureData: NewMovementResources
 
     /// Default initializer
     /// - Parameters:
     ///   - dataSource: data source used to store data
-    ///   - stores: store list
-    ///   - categories: categories list
+    ///   - incomeData: income data with category and stores
+    ///   - expeditureData: expediture data with category and stores
     public init(dataSource: DataSourceModify,
-                stores: [CategoryStoreModel],
-                categories: [CategoryStoreModel]) {
+                incomeData: NewMovementResources,
+                expeditureData: NewMovementResources) {
         self.dataSource = dataSource
-        self.stores = stores
-        self.categories = categories
+        self.incomeData = incomeData
+        self.expeditureData = expeditureData
     }
 }
