@@ -3,26 +3,6 @@
 
 import PackageDescription
 
-private var targets: [Target] = [
-    .target(
-        name: "NewMovement",
-        dependencies: [
-            "DataManagement",
-            "AccountsUI"
-        ],
-        resources: [.process("Resources")]
-    ),
-]
-
-#if os(iOS)
-    targets.append(
-        .testTarget(
-            name: "NewMovementTests",
-            dependencies: ["NewMovement"]
-        )
-    )
-#endif
-
 let package = Package(
     name: "NewMovement",
     defaultLocalization: "es",
@@ -33,10 +13,9 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "NewMovement",
-            targets: ["NewMovement"]
+            name: "NewMovement-iOS",
+            targets: ["NewMovement-iOS"]
         ),
     ],
     dependencies: [
@@ -48,5 +27,26 @@ let package = Package(
                  from: "1.0.2"),
 
     ],
-    targets: targets
+    targets: [
+        .target(
+            name: "NewMovementCommon",
+            dependencies: [
+                "AccountsUI",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .target(
+            name: "NewMovement-iOS",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+                "NewMovementCommon"
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovementTests",
+            dependencies: ["NewMovementCommon"]
+        )
+    ]
 )

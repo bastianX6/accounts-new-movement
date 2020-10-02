@@ -8,6 +8,7 @@
 import AccountsUI
 import SwiftUI
 
+@available(macOS, unavailable)
 @available(watchOS, unavailable)
 @available(tvOS, unavailable)
 struct NewMovementView: View {

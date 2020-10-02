@@ -9,13 +9,19 @@ import AccountsUI
 import Combine
 import SwiftUI
 
-struct MovementTypeView: View {
+public struct MovementTypeView: View {
     @Environment(\.sizeCategory) var sizeCategory
 
     var expeditureAction: () -> Void
     var incomeAction: () -> Void
 
-    var body: some View {
+    public init(expeditureAction: @escaping () -> Void,
+                incomeAction: @escaping () -> Void) {
+        self.expeditureAction = expeditureAction
+        self.incomeAction = incomeAction
+    }
+
+    public var body: some View {
         ScrollView {
             VStack {
                 Text(L10n.whatDoYouWantToAdd)

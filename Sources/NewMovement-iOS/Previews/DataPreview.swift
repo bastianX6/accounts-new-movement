@@ -31,7 +31,7 @@ enum DataPreview {
 
     static var model: NewMovementView.DataModel {
         return NewMovementView.DataModel(currentStore: self.storeId,
-                                    currentCategory: self.categoryId)
+                                         currentCategory: self.categoryId)
     }
 
     static var modelWithData: NewMovementView.DataModel {
@@ -40,11 +40,11 @@ enum DataPreview {
         let date = dateFormatter.date(from: "2018-02-02") ?? Date()
 
         let model = NewMovementView.DataModel(title: "A title",
-                                         date: date,
-                                         amount: 150_000,
-                                         comments: "Comments :)",
-                                         currentStore: self.storeId,
-                                         currentCategory: self.categoryId)
+                                              date: date,
+                                              amount: 150_000,
+                                              comments: "Comments :)",
+                                              currentStore: self.storeId,
+                                              currentCategory: self.categoryId)
         return model
     }
 
@@ -75,8 +75,8 @@ enum DataPreview {
 
     static func baseViewDataModel(isIncome: Bool) -> NewMovementView.DataResources {
         return NewMovementView.DataResources(categories: self.categories,
-                                        stores: self.stores,
-                                        customDataSectionTitle: "Custom data section title",
-                                        isIncome: isIncome)
+                                             stores: self.stores,
+                                             customDataSectionTitle: "Custom data section title",
+                                             isIncome: isIncome)
     }
 }
