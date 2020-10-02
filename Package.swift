@@ -3,26 +3,6 @@
 
 import PackageDescription
 
-private var targets: [Target] = [
-    .target(
-        name: "NewMovement",
-        dependencies: [
-            "DataManagement",
-            "AccountsUI"
-        ],
-        resources: [.process("Resources")]
-    ),
-]
-
-#if os(iOS)
-    targets.append(
-        .testTarget(
-            name: "NewMovementTests",
-            dependencies: ["NewMovement"]
-        )
-    )
-#endif
-
 let package = Package(
     name: "NewMovement",
     defaultLocalization: "es",
@@ -38,6 +18,10 @@ let package = Package(
             name: "NewMovement",
             targets: ["NewMovement"]
         ),
+        .library(
+            name: "NewMovement-iOS",
+            targets: ["NewMovement-iOS"]
+        ),
     ],
     dependencies: [
         .package(name: "DataManagement",
@@ -48,5 +32,27 @@ let package = Package(
                  from: "1.0.2"),
 
     ],
-    targets: targets
+    targets: [
+        .target(
+            name: "NewMovement",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .target(
+            name: "NewMovement-iOS",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+                "NewMovement"
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovementTests",
+            dependencies: ["NewMovement"]
+        )
+    ]
 )

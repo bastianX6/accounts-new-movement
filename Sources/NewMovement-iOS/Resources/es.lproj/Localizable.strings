@@ -1,0 +1,31 @@
+// MARK: - Generic
+"Add" = "Agregar";
+"Income" = "Ingreso";
+"Expedirure" = "Gasto";
+"Cancel" = "Cancelar";
+"Save" = "Guardar";
+
+// MARK: - ContainerView
+"New movement" = "Nuevo movimiento";
+"What do you want to add?" = "¿Qué deseas agregar?";
+
+// MARK: - BaseInfoView
+"Basic information" = "Información básica";
+"Description" = "Descripción";
+"Date" = "Fecha";
+"Amount ($)" = "Monto ($)";
+"Comments" = "Comentarios";
+
+// MARK: - NewIncomeView
+
+"New income" = "Nuevo ingreso";
+
+// MARK: - NewExpeditureView
+
+"New expediture" = "Nuevo gasto";
+"Expediture details" = "Detalle del gasto";
+"Income details" = "Detalle del ingreso";
+"Category" = "Categoría";
+"Store / Credit card" = "Tienda / Tarjeta";
+"Multi-payment movement" = "Compra en cuotas";
+"Number of payments (%i)" = "Nº de cuotas (%i)";
