@@ -14,8 +14,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "NewMovement-iOS",
-            targets: ["NewMovement-iOS"]
+            name: "NewMovement_iOS",
+            targets: ["NewMovement_iOS"]
         ),
     ],
     dependencies: [
@@ -36,7 +36,7 @@ let package = Package(
             resources: [.process("Resources")]
         ),
         .target(
-            name: "NewMovement-iOS",
+            name: "NewMovement_iOS",
             dependencies: [
                 "DataManagement",
                 "AccountsUI",

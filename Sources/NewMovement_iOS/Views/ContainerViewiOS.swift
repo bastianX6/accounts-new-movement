@@ -77,11 +77,7 @@ struct ContainerViewiOS: View {
         VStack {
             if self.viewModel.state.showLoading {
                 VStack {
-                    if #available(iOS 14.0, *) {
-                        ProgressView()
-                    } else {
-                        Text("Saving")
-                    }
+                    ProgressView()
                 }
                 .frame(minWidth: 0,
                        maxWidth: .infinity,

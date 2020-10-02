@@ -37,6 +37,7 @@ public struct MovementTypeView: View {
                         .frame(minWidth: 0,
                                maxWidth: .infinity,
                                alignment: .center)
+                        .padding()
                 }
                 .onTapGesture(perform: self.expeditureAction)
                 VStack {
@@ -46,6 +47,7 @@ public struct MovementTypeView: View {
                         .frame(minWidth: 0,
                                maxWidth: .infinity,
                                alignment: .center)
+                        .padding()
                 }
                 .onTapGesture(perform: self.incomeAction)
             }
