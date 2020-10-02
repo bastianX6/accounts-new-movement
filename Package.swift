@@ -27,7 +27,7 @@ let package = Package(
     name: "NewMovement",
     defaultLocalization: "es",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v14),
         .tvOS(.v13),
         .macOS(.v10_15),
         .watchOS(.v6)

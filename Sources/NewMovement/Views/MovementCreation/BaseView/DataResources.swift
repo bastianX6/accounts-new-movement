@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AccountsUI
 
 extension NewMovementView {
     struct DataResources {

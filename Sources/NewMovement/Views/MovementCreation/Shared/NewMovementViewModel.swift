@@ -24,8 +24,8 @@ class NewMovementViewModel: ObservableObject {
     private var dataSource: DataSourceModify
     private var isIncome: Bool = false
 
-    private let incomeData: NewMovementResources
-    private let expeditureData: NewMovementResources
+    private let incomeData: MovementResources
+    private let expeditureData: MovementResources
 
     var stores: [CategoryStoreModel] {
         return self.isIncome ? self.incomeData.stores : self.expeditureData.stores
@@ -37,8 +37,8 @@ class NewMovementViewModel: ObservableObject {
 
     init(model: NewMovementView.DataModel,
          dataSource: DataSourceModify,
-         incomeData: NewMovementResources,
-         expeditureData: NewMovementResources) {
+         incomeData: MovementResources,
+         expeditureData: MovementResources) {
         self.model = model
         self.dataSource = dataSource
         self.incomeData = incomeData
@@ -46,8 +46,8 @@ class NewMovementViewModel: ObservableObject {
     }
 
     init(dataSource: DataSourceModify,
-         incomeData: NewMovementResources,
-         expeditureData: NewMovementResources) {
+         incomeData: MovementResources,
+         expeditureData: MovementResources) {
         self.dataSource = dataSource
         self.incomeData = incomeData
         self.expeditureData = expeditureData

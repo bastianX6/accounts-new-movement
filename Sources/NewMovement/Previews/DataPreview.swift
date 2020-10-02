@@ -48,12 +48,12 @@ enum DataPreview {
         return model
     }
 
-    static var incomeData: NewMovementResources {
-        return NewMovementResources(categories: self.categories, stores: self.stores)
+    static var incomeData: MovementResources {
+        return MovementResources(categories: self.categories, stores: self.stores)
     }
 
-    static var expeditureData: NewMovementResources {
-        return NewMovementResources(categories: self.categories, stores: self.stores)
+    static var expeditureData: MovementResources {
+        return MovementResources(categories: self.categories, stores: self.stores)
     }
 
     static var viewModel: NewMovementViewModel {
