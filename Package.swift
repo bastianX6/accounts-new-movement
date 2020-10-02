@@ -13,11 +13,6 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "NewMovement",
-            targets: ["NewMovement"]
-        ),
         .library(
             name: "NewMovement-iOS",
             targets: ["NewMovement-iOS"]
@@ -34,9 +29,8 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "NewMovement",
+            name: "NewMovementCommon",
             dependencies: [
-                "DataManagement",
                 "AccountsUI",
             ],
             resources: [.process("Resources")]
@@ -46,13 +40,13 @@ let package = Package(
             dependencies: [
                 "DataManagement",
                 "AccountsUI",
-                "NewMovement"
+                "NewMovementCommon"
             ],
             resources: [.process("Resources")]
         ),
         .testTarget(
             name: "NewMovementTests",
-            dependencies: ["NewMovement"]
+            dependencies: ["NewMovementCommon"]
         )
     ]
 )

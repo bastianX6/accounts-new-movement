@@ -5,7 +5,7 @@
 //  Created by Bastián Véliz Vega on 17-09-20.
 //
 
-import NewMovement
+import NewMovementCommon
 import SwiftUI
 
 struct ContainerViewiOS: View {

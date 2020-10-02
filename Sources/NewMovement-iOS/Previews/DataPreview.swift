@@ -67,11 +67,11 @@ enum DataPreview {
         return MovementPreview()
     }
 
-//    static var dataModel: NewMovementViewDataModel {
-//        return NewMovementViewDataModel(dataSource: self.dataSource,
-//                                        incomeData: self.incomeData,
-//                                        expeditureData: self.expeditureData)
-//    }
+    static var dataModel: NewMovementViewDataModel {
+        return NewMovementViewDataModel(dataSource: self.dataSource,
+                                        incomeData: self.incomeData,
+                                        expeditureData: self.expeditureData)
+    }
 
     static func baseViewDataModel(isIncome: Bool) -> NewMovementView.DataResources {
         return NewMovementView.DataResources(categories: self.categories,
