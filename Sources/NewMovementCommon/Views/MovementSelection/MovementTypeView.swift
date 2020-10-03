@@ -29,6 +29,7 @@ public struct MovementTypeView: View {
                     .frame(minWidth: 0,
                            maxWidth: .infinity,
                            alignment: .center)
+                    .padding()
 
                 VStack {
                     MovementTypeCard(systemImageName: "bag.fill.badge.minus",

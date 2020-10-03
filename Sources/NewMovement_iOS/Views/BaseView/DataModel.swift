@@ -16,6 +16,8 @@ extension NewMovementView {
         var date: Date
         var amount: NSNumber
         var comments: String
+        var isPaid: Bool
+        var isPermanent: Bool
         var currentStore: UUID
         var currentCategory: UUID
 
@@ -24,6 +26,8 @@ extension NewMovementView {
              date: Date = Date(),
              amount: NSNumber = 0,
              comments: String = "",
+             isPaid: Bool = false,
+             isPermanent: Bool = false,
              currentStore: UUID,
              currentCategory: UUID) {
             self.id = id
@@ -31,6 +35,8 @@ extension NewMovementView {
             self.date = date
             self.amount = amount
             self.comments = comments
+            self.isPaid = isPaid
+            self.isPermanent = isPermanent
             self.currentStore = currentStore
             self.currentCategory = currentCategory
         }
@@ -40,6 +46,8 @@ extension NewMovementView {
                       date: movement.date,
                       amount: NSNumber(value: movement.amount),
                       comments: movement.description,
+                      isPaid: movement.isPaid,
+                      isPermanent: movement.isPermanent,
                       currentStore: movement.storeId,
                       currentCategory: movement.categoryId)
         }

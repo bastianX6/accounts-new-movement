@@ -34,6 +34,8 @@ internal enum L10n {
   internal static let income = L10n.tr("Localizable", "Income")
   /// Detalle del ingreso
   internal static let incomeDetails = L10n.tr("Localizable", "Income details")
+  /// Pagado
+  internal static let isPaid = L10n.tr("Localizable", "Is Paid")
   /// Compra en cuotas
   internal static let multiPaymentMovement = L10n.tr("Localizable", "Multi-payment movement")
   /// Nuevo gasto
@@ -46,6 +48,8 @@ internal enum L10n {
   internal static func numberOfPaymentsI(_ p1: Int) -> String {
     return L10n.tr("Localizable", "Number of payments (%i)", p1)
   }
+  /// Gasto fijo
+  internal static let permanentExpense = L10n.tr("Localizable", "Permanent expense")
   /// Guardar
   internal static let save = L10n.tr("Localizable", "Save")
   /// Tienda / Tarjeta
