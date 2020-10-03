@@ -22,18 +22,21 @@ struct ContainerViewiOS: View {
             } incomeAction: {
                 self.viewModel.setState(.showSheet(isIncome: true))
             }
+            .background(Color.systemGray6)
             .navigationBarTitle(L10n.add)
-        }.sheet(isPresented: self.$viewModel.state.showSheet,
-                onDismiss: {
-                    self.viewModel.setState(.initial)
-                },
-                content: {
-                    NavigationView {
-                        ZStack {
-                            self.newMovementView
-                            self.loadingView
-                        }
-                    }
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .sheet(isPresented: self.$viewModel.state.showSheet,
+               onDismiss: {
+                   self.viewModel.setState(.initial)
+               },
+               content: {
+                   NavigationView {
+                       ZStack {
+                           self.newMovementView
+                           self.loadingView
+                       }
+                   }
         })
     }
 
