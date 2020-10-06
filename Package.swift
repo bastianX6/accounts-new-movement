@@ -21,10 +21,10 @@ let package = Package(
     dependencies: [
         .package(name: "DataManagement",
                  url: "https://github.com/bastianX6/accounts-data-management.git",
-                 from: "1.0.1"),
+                 from: "1.0.2"),
         .package(name: "AccountsUI",
                  url: "https://github.com/bastianX6/accounts-ui.git",
-                 from: "1.0.2"),
+                 from: "1.1.0"),
 
     ],
     targets: [
