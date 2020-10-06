@@ -27,6 +27,7 @@ struct ContainerViewiOS: View {
             .navigationBarTitle(L10n.add)
             .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: self.$viewModel.state.showSheet,
                onDismiss: {
                    self.viewModel.setState(.initial)
