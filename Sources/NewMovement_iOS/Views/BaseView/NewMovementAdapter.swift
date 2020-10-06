@@ -26,8 +26,8 @@ struct NewMovementAdapter: Movement {
         self.description = model.comments
         self.amount = model.amount.floatValue
         self.date = model.date
-        self.isPaid = false
-        self.isPermanent = false
+        self.isPaid = model.isPaid
+        self.isPermanent = model.isPermanent
         self.storeId = model.currentStore
         self.categoryId = model.currentCategory
         self.paymentId = nil

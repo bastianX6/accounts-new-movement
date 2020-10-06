@@ -31,16 +31,18 @@ class NewMovementSavingState: NewMovementViewState {
     func saveAction() {
         self.cancellables.removeAll()
         guard let viewModel = self.viewModel else { return }
-        let cancellable = viewModel.saveMovement().sink(receiveCompletion: { [weak self] completion in
-            guard let strongSelf = self else { return }
-            switch completion {
-            case .finished:
-                strongSelf.viewModel?.setState(.initial)
-            case let .failure(error):
-                print("Save movement error: \(String(describing: error))")
-                strongSelf.viewModel?.setState(.error)
-            }
-        }, receiveValue: {})
+        let cancellable = viewModel.saveMovement()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let strongSelf = self else { return }
+                switch completion {
+                case .finished:
+                    strongSelf.viewModel?.setState(.initial)
+                case let .failure(error):
+                    print("Save movement error: \(String(describing: error))")
+                    strongSelf.viewModel?.setState(.error)
+                }
+            }, receiveValue: {})
 
         self.cancellables.append(cancellable)
     }
