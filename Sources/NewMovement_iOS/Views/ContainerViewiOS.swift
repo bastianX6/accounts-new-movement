@@ -23,6 +23,7 @@ struct ContainerViewiOS: View {
                 self.viewModel.setState(.showSheet(isIncome: true))
             }
             .background(Color.systemGray6)
+            .fullBackgroundColor(.systemGray6)
             .navigationBarTitle(L10n.add)
             .navigationBarTitleDisplayMode(.inline)
         }
