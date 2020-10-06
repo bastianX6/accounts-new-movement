@@ -3,50 +3,50 @@
 
 import PackageDescription
 
-private var targets: [Target] = [
-    .target(
-        name: "NewMovement",
-        dependencies: [
-            "DataManagement",
-            "AccountsUI"
-        ],
-        resources: [.process("Resources")]
-    ),
-]
-
-#if os(iOS)
-    targets.append(
-        .testTarget(
-            name: "NewMovementTests",
-            dependencies: ["NewMovement"]
-        )
-    )
-#endif
-
 let package = Package(
     name: "NewMovement",
     defaultLocalization: "es",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v14),
         .tvOS(.v13),
         .macOS(.v10_15),
         .watchOS(.v6)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "NewMovement",
-            targets: ["NewMovement"]
+            name: "NewMovement_iOS",
+            targets: ["NewMovement_iOS"]
         ),
     ],
     dependencies: [
         .package(name: "DataManagement",
                  url: "https://github.com/bastianX6/accounts-data-management.git",
-                 from: "1.0.1"),
+                 from: "1.0.2"),
         .package(name: "AccountsUI",
                  url: "https://github.com/bastianX6/accounts-ui.git",
-                 from: "1.0.2"),
+                 from: "1.1.0"),
 
     ],
-    targets: targets
+    targets: [
+        .target(
+            name: "NewMovementCommon",
+            dependencies: [
+                "AccountsUI",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .target(
+            name: "NewMovement_iOS",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+                "NewMovementCommon"
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovementTests",
+            dependencies: ["NewMovementCommon"]
+        )
+    ]
 )
