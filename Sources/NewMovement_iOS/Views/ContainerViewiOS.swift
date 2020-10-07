@@ -16,18 +16,17 @@ struct ContainerViewiOS: View {
     }
 
     var body: some View {
-        NavigationView {
-            MovementTypeView {
-                self.viewModel.setState(.showSheet(isIncome: false))
-            } incomeAction: {
-                self.viewModel.setState(.showSheet(isIncome: true))
-            }
-            .background(Color.systemGray6)
-            .fullBackgroundColor(.systemGray6)
-            .navigationBarTitle(L10n.add)
-            .navigationBarTitleDisplayMode(.inline)
+        MovementTypeView {
+            self.viewModel.setState(.showSheet(isIncome: false))
+        } incomeAction: {
+            self.viewModel.setState(.showSheet(isIncome: true))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .background(Color.systemGray6)
+        .fullBackgroundColor(.systemGray6)
+        .navigationBarTitle(L10n.add)
+        .navigationBarItems(leading: Text(""), trailing: Text(""))
+        .navigationBarTitleDisplayMode(.inline)
+        .wrapInNavigationViewIfNeeded()
         .sheet(isPresented: self.$viewModel.state.showSheet,
                onDismiss: {
                    self.viewModel.setState(.initial)
