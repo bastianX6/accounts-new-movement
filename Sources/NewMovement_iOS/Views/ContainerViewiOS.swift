@@ -5,11 +5,13 @@
 //  Created by Bastián Véliz Vega on 17-09-20.
 //
 
+import AccountsUI
 import NewMovementCommon
 import SwiftUI
 
 struct ContainerViewiOS: View {
     @ObservedObject var viewModel: NewMovementViewModel
+    @EnvironmentObject var appAppearance: AppAppearance
 
     init(viewModel: NewMovementViewModel) {
         self.viewModel = viewModel
@@ -38,6 +40,7 @@ struct ContainerViewiOS: View {
                            self.loadingView
                        }
                    }
+                   .accentColor(self.appAppearance.accentColor)
         })
     }
 

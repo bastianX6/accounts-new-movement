@@ -22,6 +22,10 @@ struct NewMovementView: View {
         self.dataResources = dataResources
     }
 
+    private var permanentMovementTitle: String {
+        return self.dataResources.isIncome ? L10n.permanentIncome : L10n.permanentExpense
+    }
+
     var body: some View {
         Form {
             self.basicDataSection
@@ -65,9 +69,10 @@ struct NewMovementView: View {
                         Text(item.name)
                     }
                 }
-                LabelSwitchView(title: L10n.permanentExpense, isOn: self.$model.isPermanent)
                 LabelSwitchView(title: L10n.isPaid, isOn: self.$model.isPaid)
             }
+            LabelSwitchView(title: self.permanentMovementTitle,
+                            isOn: self.$model.isPermanent)
         }
     }
 }

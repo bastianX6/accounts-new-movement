@@ -50,6 +50,8 @@ internal enum L10n {
   }
   /// Gasto fijo
   internal static let permanentExpense = L10n.tr("Localizable", "Permanent expense")
+  /// Ingreso fijo
+  internal static let permanentIncome = L10n.tr("Localizable", "Permanent income")
   /// Guardar
   internal static let save = L10n.tr("Localizable", "Save")
   /// Tienda / Tarjeta
