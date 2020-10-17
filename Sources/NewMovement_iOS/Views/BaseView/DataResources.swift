@@ -8,7 +8,7 @@
 import Foundation
 import AccountsUI
 
-extension NewMovementView {
+extension NewMovementViewInternal {
     struct DataResources {
         let categories: [CategoryStoreModel]
         let stores: [CategoryStoreModel]

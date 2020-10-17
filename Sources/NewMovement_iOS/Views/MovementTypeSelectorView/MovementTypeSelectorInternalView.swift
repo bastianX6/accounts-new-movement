@@ -1,16 +1,18 @@
 //
-//  ContainerViewiOS.swift
+//  MovementTypeSelectorInternalView.swift
 //
 //
-//  Created by Bastián Véliz Vega on 17-09-20.
+//  Created by Bastián Véliz Vega on 17-10-20.
 //
+
+import Foundation
 
 import AccountsUI
 import DependencyResolver
 import NewMovementCommon
 import SwiftUI
 
-struct ContainerViewiOS: View {
+struct MovementTypeSelectorInternalView: View {
     @ObservedObject var viewModel: NewMovementViewModel
     @EnvironmentObject var resolver: DependencyResolver
 
@@ -46,12 +48,12 @@ struct ContainerViewiOS: View {
     }
 
     private var newMovementView: some View {
-        let dataResources = NewMovementView.DataResources(
+        let dataResources = NewMovementViewInternal.DataResources(
             categories: self.viewModel.categories,
             stores: self.viewModel.stores, customDataSectionTitle: self.viewModel.state.movementDetailTitle,
             isIncome: self.viewModel.state.isIncome
         )
-        return NewMovementView(model: self.$viewModel.model,
+        return NewMovementViewInternal(model: self.$viewModel.model,
                                dataResources: dataResources)
             .navigationBarTitle(self.viewModel.state.navigationBarTitle)
             .navigationBarItems(leading: self.cancelButton,
@@ -97,8 +99,8 @@ struct ContainerViewiOS: View {
     }
 }
 
-struct ContainerViewiOS_Previews: PreviewProvider {
+struct MovementTypeSelectorInternalView_Previews: PreviewProvider {
     static var previews: some View {
-        ContainerViewiOS(viewModel: DataPreview.viewModel)
+        MovementTypeSelectorInternalView(viewModel: DataPreview.viewModel)
     }
 }

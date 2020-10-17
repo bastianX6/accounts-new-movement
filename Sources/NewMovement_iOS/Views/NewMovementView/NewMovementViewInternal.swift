@@ -1,5 +1,5 @@
 //
-//  NewMovementView.swift
+//  NewMovementViewInternal.swift
 //
 //
 //  Created by Bastián Véliz Vega on 17-09-20.
@@ -11,7 +11,7 @@ import SwiftUI
 @available(macOS, unavailable)
 @available(watchOS, unavailable)
 @available(tvOS, unavailable)
-struct NewMovementView: View {
+struct NewMovementViewInternal: View {
     @Binding var model: DataModel
     private let dataResources: DataResources
 
@@ -77,20 +77,20 @@ struct NewMovementView: View {
     }
 }
 
-struct NewMovementBaseView_Previews: PreviewProvider {
+struct NewMovementViewInternal_Previews: PreviewProvider {
     @ObservedObject static var manager: NewMovementViewModel = DataPreview.viewModel
 
     static var previews: some View {
         Group {
-            NewMovementView(model: self.$manager.model,
+            NewMovementViewInternal(model: self.$manager.model,
                             dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
 
-            NewMovementView(model: self.$manager.model,
+            NewMovementViewInternal(model: self.$manager.model,
                             dataResources: DataPreview.baseViewDataModel(isIncome: false))
                 .environment(\.colorScheme, .dark)
 
-            NewMovementView(model: self.$manager.model,
+            NewMovementViewInternal(model: self.$manager.model,
                             dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)

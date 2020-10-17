@@ -9,7 +9,7 @@ import Combine
 import DataManagement
 import Foundation
 
-extension NewMovementView {
+extension NewMovementViewInternal {
     class DataModel: ObservableObject, CustomStringConvertible {
         var id: UUID
         var title: String

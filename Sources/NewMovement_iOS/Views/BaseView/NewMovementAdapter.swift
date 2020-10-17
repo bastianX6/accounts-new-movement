@@ -20,7 +20,7 @@ struct NewMovementAdapter: Movement {
     let categoryId: UUID
     let paymentId: UUID?
 
-    init(model: NewMovementView.DataModel) {
+    init(model: NewMovementViewInternal.DataModel) {
         self.id = model.id
         self.name = model.title
         self.description = model.comments
