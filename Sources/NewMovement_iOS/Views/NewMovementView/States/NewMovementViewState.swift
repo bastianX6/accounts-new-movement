@@ -19,6 +19,7 @@ enum NewMovementViewStateEnum {
 protocol NewMovementViewState: AnyObject {
     var isIncome: Bool { get set }
     var showLoading: Bool { get }
+    var isEdition: Bool { get set }
     var navigationBarTitle: String { get }
     var movementDetailTitle: String { get }
 

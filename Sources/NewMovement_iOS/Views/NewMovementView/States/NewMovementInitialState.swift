@@ -10,9 +10,14 @@ import Foundation
 class NewMovementInitialState: NewMovementViewState {
     var isIncome: Bool = false
     let showLoading: Bool = false
+    var isEdition: Bool = false
 
     var navigationBarTitle: String {
-        return self.isIncome ? L10n.newIncome : L10n.newExpenditure
+        if self.isEdition {
+            return self.isIncome ? L10n.editIncome : L10n.editExpenditure
+        } else {
+            return self.isIncome ? L10n.newIncome : L10n.newExpenditure
+        }
     }
 
     var movementDetailTitle: String {

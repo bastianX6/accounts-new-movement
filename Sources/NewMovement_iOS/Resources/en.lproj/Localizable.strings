@@ -1,13 +1,7 @@
 // MARK: - Generic
 "Add" = "Add";
-"Income" = "Income";
-"Expedirure" = "Expedirure";
 "Cancel" = "Cancel";
 "Save" = "Save";
-
-// MARK: - ContainerView
-"New movement" = "New movement";
-"What do you want to add?" = "What do you want to add?";
 
 // MARK: - BaseInfoView
 "Basic information" = "Basic information";
@@ -19,11 +13,13 @@
 // MARK: - NewIncomeView
 
 "New income" = "New income";
+"Edit income" = "Edit income";
 "Permanent income" = "Permanent income";
 
 // MARK: - NewExpenditureView
 
 "New expenditure" = "New expenditure";
+"Edit expenditure" = "Edit expenditure";
 "Expenditure details" = "Expenditure details";
 "Income details" = "Income details";
 "Category" = "Category";

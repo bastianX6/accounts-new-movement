@@ -39,6 +39,7 @@ public struct NewMovementView: View {
                                              expenditureData: dataModel.expenditureData,
                                              onEnd: onEnd)
         viewModel.isIncome = isIncome
+        viewModel.isEdition = true
         self.viewModel = viewModel
     }
 

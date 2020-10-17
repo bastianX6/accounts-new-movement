@@ -1,13 +1,7 @@
 // MARK: - Generic
 "Add" = "Agregar";
-"Income" = "Ingreso";
-"Expedirure" = "Gasto";
 "Cancel" = "Cancelar";
 "Save" = "Guardar";
-
-// MARK: - ContainerView
-"New movement" = "Nuevo movimiento";
-"What do you want to add?" = "¿Qué deseas agregar?";
 
 // MARK: - BaseInfoView
 "Basic information" = "Información básica";
@@ -19,11 +13,13 @@
 // MARK: - NewIncomeView
 
 "New income" = "Nuevo ingreso";
+"Edit income" = "Editar ingreso";
 "Permanent income" = "Ingreso fijo";
 
 // MARK: - NewExpenditureView
 
 "New expenditure" = "Nuevo gasto";
+"Edit expenditure" = "Editar gasto";
 "Expenditure details" = "Detalle del gasto";
 "Income details" = "Detalle del ingreso";
 "Category" = "Categoría";

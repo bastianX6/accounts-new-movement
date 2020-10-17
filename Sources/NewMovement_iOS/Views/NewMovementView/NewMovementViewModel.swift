@@ -27,6 +27,12 @@ class NewMovementViewModel: ObservableObject {
         }
     }
 
+    var isEdition: Bool = false {
+        didSet {
+            self.updateIsEdition()
+        }
+    }
+
     private let incomeData: MovementResources
     private let expenditureData: MovementResources
 
@@ -99,5 +105,12 @@ class NewMovementViewModel: ObservableObject {
         } else {
             fatalError("Can't init NewMovementViewModel with empty store and category arrays")
         }
+    }
+
+    private func updateIsEdition() {
+        self.savingState.isEdition = self.isEdition
+        self.errorState.isEdition = self.isEdition
+        self.endState.isEdition = self.isEdition
+        self.state.isEdition = self.isEdition
     }
 }
