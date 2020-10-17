@@ -6,12 +6,13 @@
 //
 
 import AccountsUI
+import DependencyResolver
 import NewMovementCommon
 import SwiftUI
 
 struct ContainerViewiOS: View {
     @ObservedObject var viewModel: NewMovementViewModel
-    @EnvironmentObject var appAppearance: AppAppearance
+    @EnvironmentObject var resolver: DependencyResolver
 
     init(viewModel: NewMovementViewModel) {
         self.viewModel = viewModel
@@ -40,7 +41,7 @@ struct ContainerViewiOS: View {
                            self.loadingView
                        }
                    }
-                   .accentColor(self.appAppearance.accentColor)
+                   .accentColor(self.resolver.appearance.accentColor)
         })
     }
 
