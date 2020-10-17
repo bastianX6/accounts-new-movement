@@ -13,18 +13,18 @@ import AccountsUI
 public struct NewMovementViewDataModel {
     let dataSource: DataSourceModify
     let incomeData: MovementResources
-    let expeditureData: MovementResources
+    let expenditureData: MovementResources
 
     /// Default initializer
     /// - Parameters:
     ///   - dataSource: data source used to store data
     ///   - incomeData: income data with category and stores
-    ///   - expeditureData: expediture data with category and stores
+    ///   - expenditureData: expenditure data with category and stores
     public init(dataSource: DataSourceModify,
                 incomeData: MovementResources,
-                expeditureData: MovementResources) {
+                expenditureData: MovementResources) {
         self.dataSource = dataSource
         self.incomeData = incomeData
-        self.expeditureData = expeditureData
+        self.expenditureData = expenditureData
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
   /// Gasto
-  internal static let expedirure = L10n.tr("Localizable", "Expedirure")
+  internal static let expenditure = L10n.tr("Localizable", "Expenditure")
   /// Ingreso
   internal static let income = L10n.tr("Localizable", "Income")
   /// ¿Qué deseas agregar?

@@ -21,14 +21,14 @@
 "New income" = "Nuevo ingreso";
 "Permanent income" = "Ingreso fijo";
 
-// MARK: - NewExpeditureView
+// MARK: - NewExpenditureView
 
-"New expediture" = "Nuevo gasto";
-"Expediture details" = "Detalle del gasto";
+"New expenditure" = "Nuevo gasto";
+"Expenditure details" = "Detalle del gasto";
 "Income details" = "Detalle del ingreso";
 "Category" = "Categoría";
 "Store / Credit card" = "Tienda / Tarjeta";
 "Multi-payment movement" = "Compra en cuotas";
 "Number of payments (%i)" = "Nº de cuotas (%i)";
 "Is Paid" = "Pagado";
-"Permanent expense" = "Gasto fijo";
+"Permanent expenditure" = "Gasto fijo";

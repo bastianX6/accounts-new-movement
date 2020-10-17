@@ -29,7 +29,7 @@ internal enum L10n {
   /// Gasto
   internal static let expedirure = L10n.tr("Localizable", "Expedirure")
   /// Detalle del gasto
-  internal static let expeditureDetails = L10n.tr("Localizable", "Expediture details")
+  internal static let expenditureDetails = L10n.tr("Localizable", "Expenditure details")
   /// Ingreso
   internal static let income = L10n.tr("Localizable", "Income")
   /// Detalle del ingreso
@@ -39,7 +39,7 @@ internal enum L10n {
   /// Compra en cuotas
   internal static let multiPaymentMovement = L10n.tr("Localizable", "Multi-payment movement")
   /// Nuevo gasto
-  internal static let newExpediture = L10n.tr("Localizable", "New expediture")
+  internal static let newExpenditure = L10n.tr("Localizable", "New expenditure")
   /// Nuevo ingreso
   internal static let newIncome = L10n.tr("Localizable", "New income")
   /// Nuevo movimiento
@@ -49,7 +49,7 @@ internal enum L10n {
     return L10n.tr("Localizable", "Number of payments (%i)", p1)
   }
   /// Gasto fijo
-  internal static let permanentExpense = L10n.tr("Localizable", "Permanent expense")
+  internal static let permanentExpenditure = L10n.tr("Localizable", "Permanent expenditure")
   /// Ingreso fijo
   internal static let permanentIncome = L10n.tr("Localizable", "Permanent income")
   /// Guardar

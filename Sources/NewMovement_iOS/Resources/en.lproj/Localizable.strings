@@ -21,14 +21,14 @@
 "New income" = "New income";
 "Permanent income" = "Permanent income";
 
-// MARK: - NewExpeditureView
+// MARK: - NewExpenditureView
 
-"New expediture" = "New expediture";
-"Expediture details" = "Expediture details";
+"New expenditure" = "New expenditure";
+"Expenditure details" = "Expenditure details";
 "Income details" = "Income details";
 "Category" = "Category";
 "Store / Credit card" = "Store / Credit card";
 "Multi-payment movement" = "Multi-payment movement";
 "Number of payments (%i)" = "Number of payments (%i)";
 "Is Paid" = "Is Paid";
-"Permanent expense" = "Permanent expense";
+"Permanent expenditure" = "Permanent expenditure";

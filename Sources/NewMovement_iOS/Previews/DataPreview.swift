@@ -52,7 +52,7 @@ enum DataPreview {
         return MovementResources(categories: self.categories, stores: self.stores)
     }
 
-    static var expeditureData: MovementResources {
+    static var expenditureData: MovementResources {
         return MovementResources(categories: self.categories, stores: self.stores)
     }
 
@@ -60,7 +60,7 @@ enum DataPreview {
         return NewMovementViewModel(model: self.modelWithData,
                                     dataSource: self.dataSource,
                                     incomeData: self.incomeData,
-                                    expeditureData: self.expeditureData,
+                                    expenditureData: self.expenditureData,
                                     onEnd: {})
     }
 
@@ -71,7 +71,7 @@ enum DataPreview {
     static var dataModel: NewMovementViewDataModel {
         return NewMovementViewDataModel(dataSource: self.dataSource,
                                         incomeData: self.incomeData,
-                                        expeditureData: self.expeditureData)
+                                        expenditureData: self.expenditureData)
     }
 
     static func baseViewDataModel(isIncome: Bool) -> NewMovementViewInternal.DataResources {

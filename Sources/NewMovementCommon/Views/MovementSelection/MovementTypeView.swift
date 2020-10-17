@@ -12,12 +12,12 @@ import SwiftUI
 public struct MovementTypeView: View {
     @Environment(\.sizeCategory) var sizeCategory
 
-    var expeditureAction: () -> Void
+    var expenditureAction: () -> Void
     var incomeAction: () -> Void
 
-    public init(expeditureAction: @escaping () -> Void,
+    public init(expenditureAction: @escaping () -> Void,
                 incomeAction: @escaping () -> Void) {
-        self.expeditureAction = expeditureAction
+        self.expenditureAction = expenditureAction
         self.incomeAction = incomeAction
     }
 
@@ -34,13 +34,13 @@ public struct MovementTypeView: View {
                 VStack {
                     MovementTypeCard(systemImageName: "bag.fill.badge.minus",
                                      imageTintColor: .purple,
-                                     title: L10n.expedirure)
+                                     title: L10n.expenditure)
                         .frame(minWidth: 0,
                                maxWidth: .infinity,
                                alignment: .center)
                         .padding()
                 }
-                .onTapGesture(perform: self.expeditureAction)
+                .onTapGesture(perform: self.expenditureAction)
                 VStack {
                     MovementTypeCard(systemImageName: "dollarsign.square.fill",
                                      imageTintColor: .indigo,
@@ -59,17 +59,17 @@ public struct MovementTypeView: View {
 struct MovementTypeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MovementTypeView(expeditureAction: {}, incomeAction: {})
+            MovementTypeView(expenditureAction: {}, incomeAction: {})
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
                 .environment(\.locale, Locale(identifier: "es"))
 
-            MovementTypeView(expeditureAction: {}, incomeAction: {})
+            MovementTypeView(expenditureAction: {}, incomeAction: {})
                 .environment(\.colorScheme, .light)
 
-            MovementTypeView(expeditureAction: {}, incomeAction: {})
+            MovementTypeView(expenditureAction: {}, incomeAction: {})
                 .environment(\.sizeCategory, .large)
 
-            MovementTypeView(expeditureAction: {}, incomeAction: {})
+            MovementTypeView(expenditureAction: {}, incomeAction: {})
                 .background(Color.systemGray2)
                 .environment(\.colorScheme, .dark)
         }

@@ -23,7 +23,7 @@ struct NewMovementViewInternal: View {
     }
 
     private var permanentMovementTitle: String {
-        return self.dataResources.isIncome ? L10n.permanentIncome : L10n.permanentExpense
+        return self.dataResources.isIncome ? L10n.permanentIncome : L10n.permanentExpenditure
     }
 
     var body: some View {
@@ -83,15 +83,15 @@ struct NewMovementViewInternal_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NewMovementViewInternal(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: true))
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
 
             NewMovementViewInternal(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: false))
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: false))
                 .environment(\.colorScheme, .dark)
 
             NewMovementViewInternal(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: true))
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         }

@@ -36,7 +36,7 @@ public struct NewMovementView: View {
         let viewModel = NewMovementViewModel(model: model,
                                              dataSource: dataModel.dataSource,
                                              incomeData: dataModel.incomeData,
-                                             expeditureData: dataModel.expeditureData,
+                                             expenditureData: dataModel.expenditureData,
                                              onEnd: onEnd)
         viewModel.isIncome = isIncome
         self.viewModel = viewModel

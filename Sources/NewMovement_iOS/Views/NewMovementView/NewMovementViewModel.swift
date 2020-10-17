@@ -28,38 +28,38 @@ class NewMovementViewModel: ObservableObject {
     }
 
     private let incomeData: MovementResources
-    private let expeditureData: MovementResources
+    private let expenditureData: MovementResources
 
     var stores: [CategoryStoreModel] {
-        return self.isIncome ? self.incomeData.stores : self.expeditureData.stores
+        return self.isIncome ? self.incomeData.stores : self.expenditureData.stores
     }
 
     var categories: [CategoryStoreModel] {
-        return self.isIncome ? self.incomeData.categories : self.expeditureData.categories
+        return self.isIncome ? self.incomeData.categories : self.expenditureData.categories
     }
 
     init(model: NewMovementViewInternal.DataModel,
          dataSource: DataSourceModify,
          incomeData: MovementResources,
-         expeditureData: MovementResources,
+         expenditureData: MovementResources,
          onEnd: @escaping () -> Void) {
         self.model = model
         self.dataSource = dataSource
         self.incomeData = incomeData
-        self.expeditureData = expeditureData
+        self.expenditureData = expenditureData
         self.endState.onEnd = onEnd
     }
 
     convenience init(dataSource: DataSourceModify,
                      incomeData: MovementResources,
-                     expeditureData: MovementResources,
+                     expenditureData: MovementResources,
                      onEnd: @escaping () -> Void) {
         let model = NewMovementViewInternal.DataModel(currentStore: UUID(),
                                                       currentCategory: UUID())
         self.init(model: model,
                   dataSource: dataSource,
                   incomeData: incomeData,
-                  expeditureData: expeditureData,
+                  expenditureData: expenditureData,
                   onEnd: onEnd)
     }
 

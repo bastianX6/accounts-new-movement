@@ -20,7 +20,7 @@ struct MovementTypeSelectorInternalView: View {
     init(dataModel: NewMovementViewDataModel) {
         self.viewModel = NewMovementViewModel(dataSource: dataModel.dataSource,
                                               incomeData: dataModel.incomeData,
-                                              expeditureData: dataModel.expeditureData,
+                                              expenditureData: dataModel.expenditureData,
                                               onEnd: {})
     }
 
