@@ -60,7 +60,8 @@ enum DataPreview {
         return NewMovementViewModel(model: self.modelWithData,
                                     dataSource: self.dataSource,
                                     incomeData: self.incomeData,
-                                    expeditureData: self.expeditureData)
+                                    expeditureData: self.expeditureData,
+                                    onEnd: {})
     }
 
     static var dataSource: DataSourceModify {

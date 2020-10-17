@@ -20,6 +20,7 @@ extension NewMovementViewInternal {
         var isPermanent: Bool
         var currentStore: UUID
         var currentCategory: UUID
+        let isNew: Bool
 
         init(id: UUID = UUID(),
              title: String = "",
@@ -29,7 +30,8 @@ extension NewMovementViewInternal {
              isPaid: Bool = false,
              isPermanent: Bool = false,
              currentStore: UUID,
-             currentCategory: UUID) {
+             currentCategory: UUID,
+             isNew: Bool = true) {
             self.id = id
             self.title = title
             self.date = date
@@ -39,17 +41,20 @@ extension NewMovementViewInternal {
             self.isPermanent = isPermanent
             self.currentStore = currentStore
             self.currentCategory = currentCategory
+            self.isNew = isNew
         }
 
         convenience init(movement: Movement) {
-            self.init(title: movement.name,
+            self.init(id: movement.id,
+                      title: movement.name,
                       date: movement.date,
                       amount: NSNumber(value: movement.amount),
                       comments: movement.description,
                       isPaid: movement.isPaid,
                       isPermanent: movement.isPermanent,
                       currentStore: movement.storeId,
-                      currentCategory: movement.categoryId)
+                      currentCategory: movement.categoryId,
+                      isNew: false)
         }
 
         var description: String {

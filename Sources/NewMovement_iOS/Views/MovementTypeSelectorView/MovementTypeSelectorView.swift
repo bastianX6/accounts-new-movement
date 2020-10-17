@@ -21,11 +21,7 @@ public struct MovementTypeSelectorView: View {
 
     /// View's body
     public var body: some View {
-        let viewModel = NewMovementViewModel(dataSource: self.dataModel.dataSource,
-                                             incomeData: self.dataModel.incomeData,
-                                             expeditureData: self.dataModel.expeditureData)
-
-        return MovementTypeSelectorInternalView(viewModel: viewModel)
+        return MovementTypeSelectorInternalView(dataModel: self.dataModel)
     }
 }
 

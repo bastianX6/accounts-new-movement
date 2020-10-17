@@ -15,16 +15,27 @@ import SwiftUI
 struct MovementTypeSelectorInternalView: View {
     @ObservedObject var viewModel: NewMovementViewModel
     @EnvironmentObject var resolver: DependencyResolver
+    @State var showSheet: Bool = false
 
-    init(viewModel: NewMovementViewModel) {
-        self.viewModel = viewModel
+    init(dataModel: NewMovementViewDataModel) {
+        self.viewModel = NewMovementViewModel(dataSource: dataModel.dataSource,
+                                              incomeData: dataModel.incomeData,
+                                              expeditureData: dataModel.expeditureData,
+                                              onEnd: {})
     }
 
     var body: some View {
-        MovementTypeView {
-            self.viewModel.setState(.showSheet(isIncome: false))
+        self.viewModel.endState.onEnd = {
+            self.showSheet = false
+        }
+
+        return MovementTypeView {
+            self.viewModel.isIncome = false
+            self.showSheet = true
+
         } incomeAction: {
-            self.viewModel.setState(.showSheet(isIncome: true))
+            self.viewModel.isIncome = true
+            self.showSheet = true
         }
         .background(Color.systemGray6)
         .fullBackgroundColor(.systemGray6)
@@ -32,9 +43,9 @@ struct MovementTypeSelectorInternalView: View {
         .navigationBarItems(leading: Text(""), trailing: Text(""))
         .navigationBarTitleDisplayMode(.inline)
         .wrapInNavigationViewIfNeeded()
-        .sheet(isPresented: self.$viewModel.state.showSheet,
+        .sheet(isPresented: self.$showSheet,
                onDismiss: {
-                   self.viewModel.setState(.initial)
+                   self.viewModel.setState(.end)
                },
                content: {
                    NavigationView {
@@ -50,11 +61,12 @@ struct MovementTypeSelectorInternalView: View {
     private var newMovementView: some View {
         let dataResources = NewMovementViewInternal.DataResources(
             categories: self.viewModel.categories,
-            stores: self.viewModel.stores, customDataSectionTitle: self.viewModel.state.movementDetailTitle,
+            stores: self.viewModel.stores,
+            customDataSectionTitle: self.viewModel.state.movementDetailTitle,
             isIncome: self.viewModel.state.isIncome
         )
         return NewMovementViewInternal(model: self.$viewModel.model,
-                               dataResources: dataResources)
+                                       dataResources: dataResources)
             .navigationBarTitle(self.viewModel.state.navigationBarTitle)
             .navigationBarItems(leading: self.cancelButton,
                                 trailing: self.saveButton)
@@ -64,7 +76,7 @@ struct MovementTypeSelectorInternalView: View {
 
     private var cancelButton: some View {
         Button {
-            self.viewModel.setState(.initial)
+            self.viewModel.setState(.end)
         } label: {
             Text(L10n.cancel)
         }
@@ -101,6 +113,6 @@ struct MovementTypeSelectorInternalView: View {
 
 struct MovementTypeSelectorInternalView_Previews: PreviewProvider {
     static var previews: some View {
-        MovementTypeSelectorInternalView(viewModel: DataPreview.viewModel)
+        MovementTypeSelectorInternalView(dataModel: DataPreview.dataModel)
     }
 }

@@ -15,21 +15,31 @@ public struct NewMovementView: View {
     @EnvironmentObject var resolver: DependencyResolver
 
     private var dataModel: NewMovementViewDataModel
-    private var movement: Movement?
+    private var movement: Movement
+    private let isIncome: Bool
 
     /// Default initializer
     /// - Parameters:
     ///   - dataModel: data used to populate the view
     ///   - movement: movement used to edit its data.
+    ///   - isIncome: indicates if view must be prepared for an income
+    ///   - onEnd: called when movement edition ends
     public init(dataModel: NewMovementViewDataModel,
-                movement: Movement) {
+                movement: Movement,
+                isIncome: Bool,
+                onEnd: @escaping () -> Void) {
         self.dataModel = dataModel
         self.movement = movement
+        self.isIncome = isIncome
         let model = NewMovementViewInternal.DataModel(movement: movement)
-        self.viewModel = NewMovementViewModel(model: model,
-                                              dataSource: dataModel.dataSource,
-                                              incomeData: dataModel.incomeData,
-                                              expeditureData: dataModel.expeditureData)
+
+        let viewModel = NewMovementViewModel(model: model,
+                                             dataSource: dataModel.dataSource,
+                                             incomeData: dataModel.incomeData,
+                                             expeditureData: dataModel.expeditureData,
+                                             onEnd: onEnd)
+        viewModel.isIncome = isIncome
+        self.viewModel = viewModel
     }
 
     public var body: some View {
@@ -46,7 +56,7 @@ public struct NewMovementView: View {
         let dataResources = NewMovementViewInternal.DataResources(
             categories: self.viewModel.categories,
             stores: self.viewModel.stores, customDataSectionTitle: self.viewModel.state.movementDetailTitle,
-            isIncome: self.viewModel.state.isIncome
+            isIncome: self.isIncome
         )
         return NewMovementViewInternal(model: self.$viewModel.model,
                                        dataResources: dataResources)
@@ -59,7 +69,7 @@ public struct NewMovementView: View {
 
     private var cancelButton: some View {
         Button {
-            self.viewModel.setState(.initial)
+            self.viewModel.setState(.end)
         } label: {
             Text(L10n.cancel)
         }
@@ -97,6 +107,8 @@ public struct NewMovementView: View {
 struct NewMovementView_Previews: PreviewProvider {
     static var previews: some View {
         NewMovementView(dataModel: DataPreview.dataModel,
-                      movement: DataPreview.movement)
+                        movement: DataPreview.movement,
+                        isIncome: true,
+                        onEnd: {})
     }
 }

@@ -18,7 +18,6 @@ class NewMovementSavingState: NewMovementViewState {
     }
 
     var isIncome: Bool = false
-    var showSheet: Bool = true
     let showLoading: Bool = true
     var navigationBarTitle: String {
         return self.isIncome ? L10n.newIncome : L10n.newExpediture
@@ -37,7 +36,7 @@ class NewMovementSavingState: NewMovementViewState {
                 guard let strongSelf = self else { return }
                 switch completion {
                 case .finished:
-                    strongSelf.viewModel?.setState(.initial)
+                    strongSelf.viewModel?.setState(.end)
                 case let .failure(error):
                     print("Save movement error: \(String(describing: error))")
                     strongSelf.viewModel?.setState(.error)
@@ -48,4 +47,6 @@ class NewMovementSavingState: NewMovementViewState {
     }
 
     func cancelAction() {}
+    
+    func endAction() {}
 }
