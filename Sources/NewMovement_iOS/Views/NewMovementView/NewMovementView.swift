@@ -5,6 +5,7 @@
 //  Created by Bastián Véliz Vega on 17-10-20.
 //
 
+import AccountsUI
 import DataManagement
 import DependencyResolver
 import SwiftUI
@@ -46,7 +47,11 @@ public struct NewMovementView: View {
     public var body: some View {
         NavigationView {
             ZStack {
-                self.newMovementView
+                if self.viewModel.state.error != nil {
+                    self.errorView
+                } else {
+                    self.newMovementView
+                }
                 self.loadingView
             }
         }.alert(isPresented: self.$viewModel.state.showDeleteAlert,
@@ -84,12 +89,13 @@ public struct NewMovementView: View {
     }
 
     private var saveButton: some View {
-        Button {
+        let disabled = self.viewModel.state.showLoading || self.viewModel.state.error != nil
+        return Button {
             self.viewModel.setState(.saving)
         } label: {
             Text(L10n.save).bold()
         }
-        .disabled(self.viewModel.state.showLoading)
+        .disabled(disabled)
     }
 
     // MARK: - Loading view
@@ -126,6 +132,13 @@ public struct NewMovementView: View {
                      message: Text(message),
                      primaryButton: deleteButton,
                      secondaryButton: cancelButton)
+    }
+
+    // MARK: - Error view
+
+    private var errorView: some View {
+        GenericErrorView(title: L10n.couldnTExecuteTransaction,
+                         error: self.viewModel.state.error)
     }
 }
 

@@ -35,3 +35,7 @@
 // MARK: - Deletion
 
 "Are you sure you want to delete this movement?" = "¿Estás seguro que deseas borrar este movimiento?";
+
+// MARK: - Error
+
+"Couldn't execute transaction" = "No se pudo ejecutar la transacción";

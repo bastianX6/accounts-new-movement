@@ -24,6 +24,8 @@ internal enum L10n {
   internal static let category = L10n.tr("Localizable", "Category")
   /// Comentarios
   internal static let comments = L10n.tr("Localizable", "Comments")
+  /// No se pudo ejecutar la transacción
+  internal static let couldnTExecuteTransaction = L10n.tr("Localizable", "Couldn't execute transaction")
   /// Fecha
   internal static let date = L10n.tr("Localizable", "Date")
   /// Borrar
