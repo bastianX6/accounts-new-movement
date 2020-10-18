@@ -14,7 +14,7 @@ enum NewMovementViewStateEnum {
     case saving
     case askingForDelete
     case deleting
-    case error
+    case error(error: Error?)
     case end
 }
 
@@ -25,6 +25,7 @@ protocol NewMovementViewState: AnyObject {
     var showDeleteAlert: Bool { get set }
     var navigationBarTitle: String { get }
     var movementDetailTitle: String { get }
+    var error: Error? { get set }
 
     func saveAction()
     func cancelAction()

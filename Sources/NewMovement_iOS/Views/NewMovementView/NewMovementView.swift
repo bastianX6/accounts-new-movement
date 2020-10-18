@@ -49,8 +49,11 @@ public struct NewMovementView: View {
                 self.newMovementView
                 self.loadingView
             }
-        }
-        .accentColor(self.resolver.appearance.accentColor)
+        }.alert(isPresented: self.$viewModel.state.showDeleteAlert,
+                content: {
+                    self.deleteAlert
+        })
+            .accentColor(self.resolver.appearance.accentColor)
     }
 
     private var newMovementView: some View {
@@ -61,7 +64,9 @@ public struct NewMovementView: View {
         )
         return NewMovementViewInternal(model: self.$viewModel.model,
                                        dataResources: dataResources,
-                                       deleteAction: {})
+                                       deleteAction: {
+                                           self.viewModel.setState(.askingForDelete)
+        })
             .navigationBarTitle(self.viewModel.state.navigationBarTitle)
             .navigationBarItems(leading: self.cancelButton,
                                 trailing: self.saveButton)
@@ -81,7 +86,6 @@ public struct NewMovementView: View {
     private var saveButton: some View {
         Button {
             self.viewModel.setState(.saving)
-            self.viewModel.state.saveAction()
         } label: {
             Text(L10n.save).bold()
         }
@@ -103,6 +107,25 @@ public struct NewMovementView: View {
                 .background(Color.backgroundColor.opacity(0.5))
             }
         }
+    }
+
+    // MARK: - Delete alert
+
+    private var deleteAlert: Alert {
+        let message = L10n.areYouSureYouWantToDeleteThisMovement
+        let title = self.isIncome ? L10n.deleteIncome : L10n.deleteExpenditure
+        let deleteButtonLabel = L10n.delete
+
+        let deleteButton = Alert.Button.destructive(Text(deleteButtonLabel)) {
+            self.viewModel.setState(.deleting)
+        }
+
+        let cancelButton = Alert.Button.cancel()
+
+        return Alert(title: Text(title),
+                     message: Text(message),
+                     primaryButton: deleteButton,
+                     secondaryButton: cancelButton)
     }
 }
 

@@ -12,6 +12,7 @@ class NewMovementViewBaseState: NewMovementViewState {
     var showLoading: Bool = false
     var isEdition: Bool = false
     var showDeleteAlert: Bool = false
+    var error: Error?
     var navigationBarTitle: String {
         if self.isEdition {
             return self.isIncome ? L10n.editIncome : L10n.editExpenditure

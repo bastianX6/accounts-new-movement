@@ -14,6 +14,8 @@ internal enum L10n {
   internal static let add = L10n.tr("Localizable", "Add")
   /// Monto ($)
   internal static let amount = L10n.tr("Localizable", "Amount ($)")
+  /// ¿Estás seguro que deseas borrar este movimiento?
+  internal static let areYouSureYouWantToDeleteThisMovement = L10n.tr("Localizable", "Are you sure you want to delete this movement?")
   /// Información básica
   internal static let basicInformation = L10n.tr("Localizable", "Basic information")
   /// Cancelar
@@ -24,6 +26,8 @@ internal enum L10n {
   internal static let comments = L10n.tr("Localizable", "Comments")
   /// Fecha
   internal static let date = L10n.tr("Localizable", "Date")
+  /// Borrar
+  internal static let delete = L10n.tr("Localizable", "Delete")
   /// Borrar gasto
   internal static let deleteExpenditure = L10n.tr("Localizable", "Delete expenditure")
   /// Borrar ingreso

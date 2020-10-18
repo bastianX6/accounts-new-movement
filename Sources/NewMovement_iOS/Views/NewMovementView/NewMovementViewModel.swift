@@ -18,6 +18,8 @@ class NewMovementViewModel: ObservableObject {
 
     private lazy var savingState: NewMovementViewState = NewMovementSavingState(viewModel: self)
     private lazy var errorState: NewMovementViewState = NewMovementErrorState(viewModel: self)
+    private lazy var deletingState: NewMovementViewState = NewMovementDeletingState(viewModel: self)
+    private var askForDeletingState: NewMovementViewState = NewMovementAskingForDeleteState()
     private(set) lazy var endState = NewMovementEndState()
 
     private var dataSource: DataSourceModify
@@ -73,15 +75,18 @@ class NewMovementViewModel: ObservableObject {
         switch state {
         case .saving:
             self.state = self.savingState
+            self.state.saveAction()
         case .error:
             self.state = self.errorState
         case .end:
             self.state = self.endState
             self.state.endAction()
         case .askingForDelete:
-            break
+            self.askForDeletingState.showDeleteAlert = true
+            self.state = self.askForDeletingState
         case .deleting:
-            break
+            self.state = self.deletingState
+            self.state.deleteAction()
         }
     }
 
@@ -94,10 +99,17 @@ class NewMovementViewModel: ObservableObject {
         }
     }
 
+    func deleteMovement() -> AnyPublisher<Void, Error> {
+        let movement = NewMovementAdapter(model: self.model)
+        return self.dataSource.delete(movement: movement)
+    }
+
     private func updateIsIncome() {
         self.savingState.isIncome = self.isIncome
         self.errorState.isIncome = self.isIncome
         self.endState.isIncome = self.isIncome
+        self.askForDeletingState.isIncome = self.isIncome
+        self.deletingState.isIncome = self.isIncome
         self.state.isIncome = self.isIncome
 
         guard self.model.isNew else { return }
@@ -115,6 +127,8 @@ class NewMovementViewModel: ObservableObject {
         self.savingState.isEdition = self.isEdition
         self.errorState.isEdition = self.isEdition
         self.endState.isEdition = self.isEdition
+        self.askForDeletingState.isEdition = self.isEdition
+        self.deletingState.isEdition = self.isEdition
         self.state.isEdition = self.isEdition
     }
 }

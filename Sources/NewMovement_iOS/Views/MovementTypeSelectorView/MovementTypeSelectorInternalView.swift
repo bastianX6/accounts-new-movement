@@ -86,7 +86,6 @@ struct MovementTypeSelectorInternalView: View {
     private var saveButton: some View {
         Button {
             self.viewModel.setState(.saving)
-            self.viewModel.state.saveAction()
         } label: {
             Text(L10n.save).bold()
         }
