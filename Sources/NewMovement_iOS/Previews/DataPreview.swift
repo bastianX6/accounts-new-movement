@@ -29,22 +29,22 @@ enum DataPreview {
         return array
     }
 
-    static var model: NewMovementView.DataModel {
-        return NewMovementView.DataModel(currentStore: self.storeId,
-                                         currentCategory: self.categoryId)
+    static var model: NewMovementViewInternal.DataModel {
+        return NewMovementViewInternal.DataModel(currentStore: self.storeId,
+                                                 currentCategory: self.categoryId)
     }
 
-    static var modelWithData: NewMovementView.DataModel {
+    static var modelWithData: NewMovementViewInternal.DataModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         let date = dateFormatter.date(from: "2018-02-02") ?? Date()
 
-        let model = NewMovementView.DataModel(title: "A title",
-                                              date: date,
-                                              amount: 150_000,
-                                              comments: "Comments :)",
-                                              currentStore: self.storeId,
-                                              currentCategory: self.categoryId)
+        let model = NewMovementViewInternal.DataModel(title: "A title",
+                                                      date: date,
+                                                      amount: 150_000,
+                                                      comments: "Comments :)",
+                                                      currentStore: self.storeId,
+                                                      currentCategory: self.categoryId)
         return model
     }
 
@@ -52,7 +52,7 @@ enum DataPreview {
         return MovementResources(categories: self.categories, stores: self.stores)
     }
 
-    static var expeditureData: MovementResources {
+    static var expenditureData: MovementResources {
         return MovementResources(categories: self.categories, stores: self.stores)
     }
 
@@ -60,7 +60,8 @@ enum DataPreview {
         return NewMovementViewModel(model: self.modelWithData,
                                     dataSource: self.dataSource,
                                     incomeData: self.incomeData,
-                                    expeditureData: self.expeditureData)
+                                    expenditureData: self.expenditureData,
+                                    onEnd: {})
     }
 
     static var dataSource: DataSourceModify {
@@ -70,13 +71,35 @@ enum DataPreview {
     static var dataModel: NewMovementViewDataModel {
         return NewMovementViewDataModel(dataSource: self.dataSource,
                                         incomeData: self.incomeData,
-                                        expeditureData: self.expeditureData)
+                                        expenditureData: self.expenditureData)
     }
 
-    static func baseViewDataModel(isIncome: Bool) -> NewMovementView.DataResources {
-        return NewMovementView.DataResources(categories: self.categories,
-                                             stores: self.stores,
-                                             customDataSectionTitle: "Custom data section title",
-                                             isIncome: isIncome)
+    static func baseViewDataModel(isIncome: Bool) -> NewMovementViewInternal.DataResources {
+        return NewMovementViewInternal.DataResources(categories: self.categories,
+                                                     stores: self.stores,
+                                                     customDataSectionTitle: "Custom data section title",
+                                                     isIncome: isIncome)
+    }
+
+    private struct PreviewMovement: Movement {
+        var id: UUID = UUID()
+        var name: String = ""
+        var description: String = ""
+        var amount: Float = 0
+        var date: Date = Date()
+        var isPaid: Bool = false
+        var isPermanent: Bool = false
+        var storeId: UUID = UUID()
+        var categoryId: UUID = UUID()
+        var paymentId: UUID?
+    }
+
+    static var movement: Movement {
+        return PreviewMovement(id: UUID(),
+                               name: "movement 1",
+                               description: "This is a movement",
+                               amount: 100,
+                               date: Date(),
+                               isPermanent: true)
     }
 }

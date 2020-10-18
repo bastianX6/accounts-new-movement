@@ -10,29 +10,27 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
-    /// Gasto
-    internal static let expedirure = L10n.tr("Localizable", "Expedirure")
-    /// Ingreso
-    internal static let income = L10n.tr("Localizable", "Income")
-    /// ¿Qué deseas agregar?
-    internal static let whatDoYouWantToAdd = L10n.tr("Localizable", "What do you want to add?")
+  /// Gasto
+  internal static let expenditure = L10n.tr("Localizable", "Expenditure")
+  /// Ingreso
+  internal static let income = L10n.tr("Localizable", "Income")
+  /// ¿Qué deseas agregar?
+  internal static let whatDoYouWantToAdd = L10n.tr("Localizable", "What do you want to add?")
 }
-
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
 
 // MARK: - Implementation Details
 
 extension L10n {
-    private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-        let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
-        return String(format: format, locale: Locale.current, arguments: args)
-    }
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = BundleToken.bundle.localizedString(forKey: key, value: nil, table: table)
+    return String(format: format, locale: Locale.current, arguments: args)
+  }
 }
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
     static let bundle = Bundle.module
 }
-
 // swiftlint:enable convenience_type

@@ -8,27 +8,18 @@
 import Combine
 import Foundation
 
-class NewMovementSavingState: NewMovementViewState {
+class NewMovementSavingState: NewMovementViewBaseState {
     private weak var viewModel: NewMovementViewModel?
 
     var cancellables: [Cancellable] = []
 
     init(viewModel: NewMovementViewModel?) {
+        super.init()
         self.viewModel = viewModel
+        self.showLoading = true
     }
 
-    var isIncome: Bool = false
-    var showSheet: Bool = true
-    let showLoading: Bool = true
-    var navigationBarTitle: String {
-        return self.isIncome ? L10n.newIncome : L10n.newExpediture
-    }
-
-    var movementDetailTitle: String {
-        return self.isIncome ? L10n.incomeDetails : L10n.expeditureDetails
-    }
-
-    func saveAction() {
+    override func saveAction() {
         self.cancellables.removeAll()
         guard let viewModel = self.viewModel else { return }
         let cancellable = viewModel.saveMovement()
@@ -37,15 +28,13 @@ class NewMovementSavingState: NewMovementViewState {
                 guard let strongSelf = self else { return }
                 switch completion {
                 case .finished:
-                    strongSelf.viewModel?.setState(.initial)
+                    strongSelf.viewModel?.setState(.end)
                 case let .failure(error):
                     print("Save movement error: \(String(describing: error))")
-                    strongSelf.viewModel?.setState(.error)
+                    strongSelf.viewModel?.setState(.error(error: error))
                 }
             }, receiveValue: {})
 
         self.cancellables.append(cancellable)
     }
-
-    func cancelAction() {}
 }

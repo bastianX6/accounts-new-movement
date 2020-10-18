@@ -1,5 +1,5 @@
 //
-//  NewMovementView.swift
+//  NewMovementViewInternal.swift
 //
 //
 //  Created by Bastián Véliz Vega on 17-09-20.
@@ -11,21 +11,30 @@ import SwiftUI
 @available(macOS, unavailable)
 @available(watchOS, unavailable)
 @available(tvOS, unavailable)
-struct NewMovementView: View {
+struct NewMovementViewInternal: View {
     @Binding var model: DataModel
     private let dataResources: DataResources
+    private var deleteAction: (() -> Void)?
 
     init(model: Binding<DataModel>,
-         dataResources: DataResources) {
+         dataResources: DataResources,
+         deleteAction: (() -> Void)? = nil) {
         self._model = model
-
         self.dataResources = dataResources
+        self.deleteAction = deleteAction
+    }
+
+    private var permanentMovementTitle: String {
+        return self.dataResources.isIncome ? L10n.permanentIncome : L10n.permanentExpenditure
     }
 
     var body: some View {
         Form {
             self.basicDataSection
             self.customDataSection
+            if self.deleteAction != nil {
+                self.deleteMovementSection
+            }
         }
     }
 
@@ -65,28 +74,39 @@ struct NewMovementView: View {
                         Text(item.name)
                     }
                 }
-                LabelSwitchView(title: L10n.permanentExpense, isOn: self.$model.isPermanent)
                 LabelSwitchView(title: L10n.isPaid, isOn: self.$model.isPaid)
             }
+            LabelSwitchView(title: self.permanentMovementTitle,
+                            isOn: self.$model.isPermanent)
+        }
+    }
+
+    private var deleteMovementSection: some View {
+        Button {
+            self.deleteAction?()
+        } label: {
+            let title = self.dataResources.isIncome ? L10n.deleteIncome : L10n.deleteExpenditure
+            Label(title, systemImage: "trash")
+                .accentColor(.red)
         }
     }
 }
 
-struct NewMovementBaseView_Previews: PreviewProvider {
+struct NewMovementViewInternal_Previews: PreviewProvider {
     @ObservedObject static var manager: NewMovementViewModel = DataPreview.viewModel
 
     static var previews: some View {
         Group {
-            NewMovementView(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: true))
+            NewMovementViewInternal(model: self.$manager.model,
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
 
-            NewMovementView(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: false))
+            NewMovementViewInternal(model: self.$manager.model,
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: false))
                 .environment(\.colorScheme, .dark)
 
-            NewMovementView(model: self.$manager.model,
-                            dataResources: DataPreview.baseViewDataModel(isIncome: true))
+            NewMovementViewInternal(model: self.$manager.model,
+                                    dataResources: DataPreview.baseViewDataModel(isIncome: true))
                 .environment(\.colorScheme, .light)
                 .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         }
