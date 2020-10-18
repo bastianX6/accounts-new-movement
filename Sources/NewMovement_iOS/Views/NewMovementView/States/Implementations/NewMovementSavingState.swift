@@ -8,32 +8,18 @@
 import Combine
 import Foundation
 
-class NewMovementSavingState: NewMovementViewState {
+class NewMovementSavingState: NewMovementViewBaseState {
     private weak var viewModel: NewMovementViewModel?
 
     var cancellables: [Cancellable] = []
 
     init(viewModel: NewMovementViewModel?) {
+        super.init()
         self.viewModel = viewModel
+        self.showLoading = true
     }
 
-    var isIncome: Bool = false
-    let showLoading: Bool = true
-    var isEdition: Bool = false
-
-    var navigationBarTitle: String {
-        if self.isEdition {
-            return self.isIncome ? L10n.editIncome : L10n.editExpenditure
-        } else {
-            return self.isIncome ? L10n.newIncome : L10n.newExpenditure
-        }
-    }
-
-    var movementDetailTitle: String {
-        return self.isIncome ? L10n.incomeDetails : L10n.expenditureDetails
-    }
-
-    func saveAction() {
+    override func saveAction() {
         self.cancellables.removeAll()
         guard let viewModel = self.viewModel else { return }
         let cancellable = viewModel.saveMovement()
@@ -51,8 +37,4 @@ class NewMovementSavingState: NewMovementViewState {
 
         self.cancellables.append(cancellable)
     }
-
-    func cancelAction() {}
-
-    func endAction() {}
 }

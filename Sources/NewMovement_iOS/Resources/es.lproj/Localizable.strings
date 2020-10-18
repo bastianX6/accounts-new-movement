@@ -14,12 +14,14 @@
 
 "New income" = "Nuevo ingreso";
 "Edit income" = "Editar ingreso";
+"Delete income" = "Borrar ingreso";
 "Permanent income" = "Ingreso fijo";
 
 // MARK: - NewExpenditureView
 
 "New expenditure" = "Nuevo gasto";
 "Edit expenditure" = "Editar gasto";
+"Delete expenditure" = "Borrar gasto";
 "Expenditure details" = "Detalle del gasto";
 "Income details" = "Detalle del ingreso";
 "Category" = "Categoría";

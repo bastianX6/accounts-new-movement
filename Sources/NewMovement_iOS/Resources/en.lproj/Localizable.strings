@@ -14,12 +14,14 @@
 
 "New income" = "New income";
 "Edit income" = "Edit income";
+"Delete income" = "Delete income";
 "Permanent income" = "Permanent income";
 
 // MARK: - NewExpenditureView
 
 "New expenditure" = "New expenditure";
 "Edit expenditure" = "Edit expenditure";
+"Delete expenditure" = "Delete expenditure";
 "Expenditure details" = "Expenditure details";
 "Income details" = "Income details";
 "Category" = "Category";

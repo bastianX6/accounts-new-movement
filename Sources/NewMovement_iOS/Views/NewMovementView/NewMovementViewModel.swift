@@ -14,11 +14,11 @@ class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
 
     @Published var model: NewMovementViewInternal.DataModel
-    @Published var state: NewMovementViewState = NewMovementInitialState()
+    @Published var state: NewMovementViewState = NewMovementViewBaseState()
 
     private lazy var savingState: NewMovementViewState = NewMovementSavingState(viewModel: self)
     private lazy var errorState: NewMovementViewState = NewMovementErrorState(viewModel: self)
-    private(set) lazy var endState = NewMovementEndState(viewModel: self)
+    private(set) lazy var endState = NewMovementEndState()
 
     private var dataSource: DataSourceModify
     var isIncome: Bool = false {
@@ -78,6 +78,10 @@ class NewMovementViewModel: ObservableObject {
         case .end:
             self.state = self.endState
             self.state.endAction()
+        case .askingForDelete:
+            break
+        case .deleting:
+            break
         }
     }
 

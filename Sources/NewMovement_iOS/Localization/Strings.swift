@@ -24,11 +24,15 @@ internal enum L10n {
   internal static let comments = L10n.tr("Localizable", "Comments")
   /// Fecha
   internal static let date = L10n.tr("Localizable", "Date")
+  /// Borrar gasto
+  internal static let deleteExpenditure = L10n.tr("Localizable", "Delete expenditure")
+  /// Borrar ingreso
+  internal static let deleteIncome = L10n.tr("Localizable", "Delete income")
   /// Descripción
   internal static let description = L10n.tr("Localizable", "Description")
   /// Editar gasto
   internal static let editExpenditure = L10n.tr("Localizable", "Edit expenditure")
-  /// Editar gasto
+  /// Editar ingreso
   internal static let editIncome = L10n.tr("Localizable", "Edit income")
   /// Detalle del gasto
   internal static let expenditureDetails = L10n.tr("Localizable", "Expenditure details")

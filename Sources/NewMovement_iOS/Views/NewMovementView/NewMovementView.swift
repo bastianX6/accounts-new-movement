@@ -60,7 +60,8 @@ public struct NewMovementView: View {
             isIncome: self.isIncome
         )
         return NewMovementViewInternal(model: self.$viewModel.model,
-                                       dataResources: dataResources)
+                                       dataResources: dataResources,
+                                       deleteAction: {})
             .navigationBarTitle(self.viewModel.state.navigationBarTitle)
             .navigationBarItems(leading: self.cancelButton,
                                 trailing: self.saveButton)

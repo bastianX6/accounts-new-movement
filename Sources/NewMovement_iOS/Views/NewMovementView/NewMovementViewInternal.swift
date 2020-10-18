@@ -14,12 +14,14 @@ import SwiftUI
 struct NewMovementViewInternal: View {
     @Binding var model: DataModel
     private let dataResources: DataResources
+    private var deleteAction: (() -> Void)?
 
     init(model: Binding<DataModel>,
-         dataResources: DataResources) {
+         dataResources: DataResources,
+         deleteAction: (() -> Void)? = nil) {
         self._model = model
-
         self.dataResources = dataResources
+        self.deleteAction = deleteAction
     }
 
     private var permanentMovementTitle: String {
@@ -30,6 +32,9 @@ struct NewMovementViewInternal: View {
         Form {
             self.basicDataSection
             self.customDataSection
+            if self.deleteAction != nil {
+                self.deleteMovementSection
+            }
         }
     }
 
@@ -73,6 +78,16 @@ struct NewMovementViewInternal: View {
             }
             LabelSwitchView(title: self.permanentMovementTitle,
                             isOn: self.$model.isPermanent)
+        }
+    }
+
+    private var deleteMovementSection: some View {
+        Button {
+            self.deleteAction?()
+        } label: {
+            let title = self.dataResources.isIncome ? L10n.deleteIncome : L10n.deleteExpenditure
+            Label(title, systemImage: "trash")
+                .accentColor(.red)
         }
     }
 }
