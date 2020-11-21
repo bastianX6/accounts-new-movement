@@ -18,13 +18,13 @@ let package = Package(
     dependencies: [
         .package(name: "DataManagement",
                  url: "https://github.com/bastianX6/accounts-data-management.git",
-                 from: "1.0.2"),
+                 .exact("1.0.2")),
         .package(name: "AccountsUI",
                  url: "https://github.com/bastianX6/accounts-ui.git",
-                 from: "1.1.0"),
+                 .exact("1.2.0")),
         .package(name: "DependencyResolver",
                  url: "https://github.com/bastianX6/accounts-dependency-resolver",
-                 from: "1.0.0"),
+                 .exact("1.0.0")),
         .package(path: "../NewMovementCommon"),
     ],
     targets: [
