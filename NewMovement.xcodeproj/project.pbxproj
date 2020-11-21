@@ -1,0 +1,77 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		0396327F25688FF100EF7CE7 /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
+		039632802568902F00EF7CE7 /* NewMovement_iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewMovement_iOS; sourceTree = "<group>"; };
+		039632812568903300EF7CE7 /* NewMovementCommon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewMovementCommon; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0396327825688FBE00EF7CE7 = {
+			isa = PBXGroup;
+			children = (
+				039632812568903300EF7CE7 /* NewMovementCommon */,
+				039632802568902F00EF7CE7 /* NewMovement_iOS */,
+				0396327F25688FF100EF7CE7 /*  */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		0396327925688FBE00EF7CE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1220;
+			};
+			buildConfigurationList = 0396327C25688FBE00EF7CE7 /* Build configuration list for PBXProject "NewMovement" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0396327825688FBE00EF7CE7;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		0396327D25688FBE00EF7CE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		0396327E25688FBE00EF7CE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0396327C25688FBE00EF7CE7 /* Build configuration list for PBXProject "NewMovement" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0396327D25688FBE00EF7CE7 /* Debug */,
+				0396327E25688FBE00EF7CE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0396327925688FBE00EF7CE7 /* Project object */;
+}
