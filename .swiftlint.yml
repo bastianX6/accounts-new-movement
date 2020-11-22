@@ -14,10 +14,10 @@ opt_in_rules:
   - weak_delegate
   - file_length
 included: 
- - NewMovementCommon
- - NewMovement_iOS
+ - Sources/NewMovementCommon
+ - Sources/NewMovement_iOS
 excluded:
-  - ./*/Package.swift
+  - .Package.swift
   - ./*/DerivedData
   - ./*/.build
 identifier_name:

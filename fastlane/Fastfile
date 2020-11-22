@@ -52,7 +52,7 @@ platform :ios do
         "DerivedData/*",
         "*/Tests/*"
       ],
-      source_directory: "./"
+      source_directory: "./Sources"
     )
   end
 
