@@ -10,28 +10,58 @@ let package = Package(
         .iOS(.v14),
         .tvOS(.v13),
         .macOS(.v10_15),
-        .watchOS(.v6)
+        .watchOS(.v6),
     ],
     products: [
         .library(
-            name: "NewMovement",
-            targets: ["NewMovement"]
-        )
+            name: "NewMovement_iOS",
+            targets: ["NewMovement_iOS"]
+        ),
+        .library(
+            name: "NewMovementCommon",
+            targets: ["NewMovementCommon"]
+        ),
     ],
     dependencies: [
-        .package(path: "./NewMovement_iOS")
-
+        .package(name: "AccountsUI",
+                 url: "https://github.com/bastianX6/accounts-ui",
+                 .upToNextMinor(from: "1.2.0")),
+        .package(name: "DependencyResolver",
+                 url: "https://github.com/bastianX6/accounts-dependency-resolver",
+                 .upToNextMinor(from: "1.0.0")),
+        .package(name: "DataManagement",
+                 url: "https://github.com/bastianX6/accounts-data-management",
+                 .upToNextMinor(from: "1.0.2")),
     ],
     targets: [
+        // NewMovementCommon
         .target(
-            name: "NewMovement",
+            name: "NewMovementCommon",
             dependencies: [
-                .product(
-                    name: "NewMovement_iOS",
-                    package: "NewMovement_iOS",
-                    condition: .when(platforms: [.iOS])
-                )
-            ]
-        )
+                "AccountsUI",
+                "DependencyResolver",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovementCommonTests",
+            dependencies: ["NewMovementCommon"]
+        ),
+
+        // NewMovement_iOS
+        .target(
+            name: "NewMovement_iOS",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+                "DependencyResolver",
+                "NewMovementCommon",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovement.iOS.Tests",
+            dependencies: ["NewMovement_iOS"]
+        ),
     ]
 )

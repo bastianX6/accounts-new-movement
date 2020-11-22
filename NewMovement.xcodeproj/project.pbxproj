@@ -8,16 +8,12 @@
 
 /* Begin PBXFileReference section */
 		0396327F25688FF100EF7CE7 /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
-		039632802568902F00EF7CE7 /* NewMovement_iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewMovement_iOS; sourceTree = "<group>"; };
-		039632812568903300EF7CE7 /* NewMovementCommon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NewMovementCommon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		0396327825688FBE00EF7CE7 = {
 			isa = PBXGroup;
 			children = (
-				039632812568903300EF7CE7 /* NewMovementCommon */,
-				039632802568902F00EF7CE7 /* NewMovement_iOS */,
 				0396327F25688FF100EF7CE7 /*  */,
 			);
 			sourceTree = "<group>";
