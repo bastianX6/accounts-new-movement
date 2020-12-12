@@ -7,15 +7,16 @@
 
 import AccountsUI
 import SwiftUI
+import NewMovementCommon
 
 
 struct NewMovementViewInternal: View {
-    @Binding var model: DataModel
-    private let dataResources: DataResources
+    @Binding var model: NewMovementViewInternalDataModel
+    private let dataResources: NewMovementViewInternalDataResources
     private var deleteAction: (() -> Void)?
 
-    init(model: Binding<DataModel>,
-         dataResources: DataResources,
+    init(model: Binding<NewMovementViewInternalDataModel>,
+         dataResources: NewMovementViewInternalDataResources,
          deleteAction: (() -> Void)? = nil) {
         self._model = model
         self.dataResources = dataResources

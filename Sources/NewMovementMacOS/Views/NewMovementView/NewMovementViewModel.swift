@@ -9,11 +9,12 @@ import AccountsUI
 import Combine
 import DataManagement
 import Foundation
+import NewMovementCommon
 
 class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
 
-    @Published var model: NewMovementViewInternal.DataModel
+    @Published var model: NewMovementViewInternalDataModel
     @Published var state: NewMovementViewState = NewMovementViewBaseState()
 
     private lazy var savingState: NewMovementViewState = NewMovementSavingState(viewModel: self)
@@ -46,7 +47,7 @@ class NewMovementViewModel: ObservableObject {
         return self.isIncome ? self.incomeData.categories : self.expenditureData.categories
     }
 
-    init(model: NewMovementViewInternal.DataModel,
+    init(model: NewMovementViewInternalDataModel,
          dataSource: DataSourceModify,
          incomeData: MovementResources,
          expenditureData: MovementResources,
@@ -62,7 +63,7 @@ class NewMovementViewModel: ObservableObject {
                      incomeData: MovementResources,
                      expenditureData: MovementResources,
                      onEnd: @escaping () -> Void) {
-        let model = NewMovementViewInternal.DataModel(currentStore: UUID(),
+        let model = NewMovementViewInternalDataModel(currentStore: UUID(),
                                                       currentCategory: UUID())
         self.init(model: model,
                   dataSource: dataSource,
@@ -116,7 +117,7 @@ class NewMovementViewModel: ObservableObject {
 
         if let currentStore = self.stores.first?.id,
             let currentCategory = self.categories.first?.id {
-            self.model = NewMovementViewInternal.DataModel(currentStore: currentStore,
+            self.model = NewMovementViewInternalDataModel(currentStore: currentStore,
                                                            currentCategory: currentCategory)
         } else {
             fatalError("Can't init NewMovementViewModel with empty store and category arrays")

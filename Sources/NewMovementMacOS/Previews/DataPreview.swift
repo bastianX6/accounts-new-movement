@@ -8,6 +8,7 @@
 import AccountsUI
 import DataManagement
 import Foundation
+import NewMovementCommon
 
 enum DataPreview {
     static let categoryId = UUID()
@@ -29,17 +30,17 @@ enum DataPreview {
         return array
     }
 
-    static var model: NewMovementViewInternal.DataModel {
-        return NewMovementViewInternal.DataModel(currentStore: self.storeId,
+    static var model: NewMovementViewInternalDataModel {
+        return NewMovementViewInternalDataModel(currentStore: self.storeId,
                                                  currentCategory: self.categoryId)
     }
 
-    static var modelWithData: NewMovementViewInternal.DataModel {
+    static var modelWithData: NewMovementViewInternalDataModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
         let date = dateFormatter.date(from: "2018-02-02") ?? Date()
 
-        let model = NewMovementViewInternal.DataModel(title: "A title",
+        let model = NewMovementViewInternalDataModel(title: "A title",
                                                       date: date,
                                                       amount: 150_000,
                                                       comments: "Comments :)",
@@ -74,8 +75,8 @@ enum DataPreview {
                                         expenditureData: self.expenditureData)
     }
 
-    static func baseViewDataModel(isIncome: Bool) -> NewMovementViewInternal.DataResources {
-        return NewMovementViewInternal.DataResources(categories: self.categories,
+    static func baseViewDataModel(isIncome: Bool) -> NewMovementViewInternalDataResources {
+        return NewMovementViewInternalDataResources(categories: self.categories,
                                                      stores: self.stores,
                                                      customDataSectionTitle: "Custom data section title",
                                                      isIncome: isIncome)
