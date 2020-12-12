@@ -2,3 +2,12 @@
 "Income" = "Income";
 "Expenditure" = "Expenditure";
 "What do you want to add?" = "What do you want to add?";
+
+"New income" = "New income";
+"Edit income" = "Edit income";
+
+"New expenditure" = "New expenditure";
+"Edit expenditure" = "Edit expenditure";
+
+"Delete expenditure" = "Delete expenditure";
+"Expenditure details" = "Expenditure details";

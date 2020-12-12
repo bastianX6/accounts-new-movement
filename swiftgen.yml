@@ -3,10 +3,10 @@ strings:
     outputs:
       templateName: structured-swift5
       output: Sources/NewMovement_iOS/Localization/Strings.swift
-  - inputs: Sources/NewMovement_macOS/Resources/es.lproj
+  - inputs: Sources/NewMovementMacOS/Resources/es.lproj
     outputs:
       templateName: structured-swift5
-      output: Sources/NewMovement_macOS/Localization/Strings.swift
+      output: Sources/NewMovementMacOS/Localization/Strings.swift
   - inputs: Sources/NewMovementCommon/Resources/es.lproj
     outputs:
       templateName: structured-swift5

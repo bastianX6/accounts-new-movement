@@ -2,3 +2,12 @@
 "Income" = "Ingreso";
 "Expenditure" = "Gasto";
 "What do you want to add?" = "¿Qué deseas agregar?";
+
+"New income" = "Nuevo ingreso";
+"Edit income" = "Editar ingreso";
+
+"New expenditure" = "Nuevo gasto";
+"Edit expenditure" = "Editar gasto";
+
+"Expenditure details" = "Detalle del gasto";
+"Income details" = "Detalle del ingreso";

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - State definition
 
-enum NewMovementViewStateEnum {
+public enum NewMovementViewStateEnum {
     case saving
     case askingForDelete
     case deleting
@@ -18,7 +18,7 @@ enum NewMovementViewStateEnum {
     case end
 }
 
-protocol NewMovementViewState: AnyObject {
+public protocol NewMovementViewState: AnyObject {
     var isIncome: Bool { get set }
     var showLoading: Bool { get }
     var isEdition: Bool { get set }

@@ -8,18 +8,18 @@
 import Combine
 import Foundation
 
-class NewMovementSavingState: NewMovementViewBaseState {
+public class NewMovementSavingState: NewMovementViewBaseState {
     private weak var viewModel: NewMovementViewModel?
 
     var cancellables: [Cancellable] = []
 
-    init(viewModel: NewMovementViewModel?) {
+    public init(viewModel: NewMovementViewModel?) {
         super.init()
         self.viewModel = viewModel
         self.showLoading = true
     }
 
-    override func saveAction() {
+    override public func saveAction() {
         self.cancellables.removeAll()
         guard let viewModel = self.viewModel else { return }
         let cancellable = viewModel.saveMovement()
