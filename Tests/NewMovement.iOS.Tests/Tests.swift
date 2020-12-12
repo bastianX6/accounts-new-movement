@@ -10,7 +10,7 @@ import Foundation
 @testable import NewMovement_iOS
 import XCTest
 
-final class MovementDetailsMapperTests: XCTestCase {
+final class Tests: XCTestCase {
     func testFake() {
         XCTAssert(true)
     }

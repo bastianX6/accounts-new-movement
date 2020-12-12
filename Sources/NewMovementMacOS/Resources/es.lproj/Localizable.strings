@@ -1,0 +1,41 @@
+// MARK: - Generic
+"Add" = "Agregar";
+"Cancel" = "Cancelar";
+"Save" = "Guardar";
+"Delete" = "Borrar";
+
+// MARK: - BaseInfoView
+"Basic information" = "Información básica";
+"Description" = "Descripción";
+"Date" = "Fecha";
+"Amount ($)" = "Monto ($)";
+"Comments" = "Comentarios";
+
+// MARK: - NewIncomeView
+
+"New income" = "Nuevo ingreso";
+"Edit income" = "Editar ingreso";
+"Delete income" = "Borrar ingreso";
+"Permanent income" = "Ingreso fijo";
+
+// MARK: - NewExpenditureView
+
+"New expenditure" = "Nuevo gasto";
+"Edit expenditure" = "Editar gasto";
+"Delete expenditure" = "Borrar gasto";
+"Expenditure details" = "Detalle del gasto";
+"Income details" = "Detalle del ingreso";
+"Category" = "Categoría";
+"Store / Credit card" = "Tienda / Tarjeta";
+"Multi-payment movement" = "Compra en cuotas";
+"Number of payments (%i)" = "Nº de cuotas (%i)";
+"Is Paid" = "Pagado";
+"Permanent expenditure" = "Gasto fijo";
+
+// MARK: - Deletion
+
+"Are you sure you want to delete this movement?" = "¿Estás seguro que deseas borrar este movimiento?";
+
+// MARK: - Error
+
+"Couldn't execute transaction" = "No se pudo ejecutar la transacción";

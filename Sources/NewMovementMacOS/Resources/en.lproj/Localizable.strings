@@ -1,0 +1,41 @@
+// MARK: - Generic
+"Add" = "Add";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Delete" = "Delete";
+
+// MARK: - BaseInfoView
+"Basic information" = "Basic information";
+"Description" = "Description";
+"Date" = "Date";
+"Amount ($)" = "Amount ($)";
+"Comments" = "Comments";
+
+// MARK: - NewIncomeView
+
+"New income" = "New income";
+"Edit income" = "Edit income";
+"Delete income" = "Delete income";
+"Permanent income" = "Permanent income";
+
+// MARK: - NewExpenditureView
+
+"New expenditure" = "New expenditure";
+"Edit expenditure" = "Edit expenditure";
+"Delete expenditure" = "Delete expenditure";
+"Expenditure details" = "Expenditure details";
+"Income details" = "Income details";
+"Category" = "Category";
+"Store / Credit card" = "Store / Credit card";
+"Multi-payment movement" = "Multi-payment movement";
+"Number of payments (%i)" = "Number of payments (%i)";
+"Is Paid" = "Is Paid";
+"Permanent expenditure" = "Permanent expenditure";
+
+// MARK: - Deletion
+
+"Are you sure you want to delete this movement?" = "Are you sure you want to delete this movement?";
+
+// MARK: - Error
+
+"Couldn't execute transaction" = "Couldn't execute transaction";
