@@ -50,8 +50,10 @@ struct MovementTypeSelectorInternalView: View {
     }
 
     private var newMovementContainerView: some View {
-        return MovementTypeNewMovementView(viewModel: self._viewModel)
-            .frame(width: 500, height: 500, alignment: .center)
+        return NewMovementContainerView(viewModel: self._viewModel)
+            .frame(width: 500,
+                   height: 500,
+                   alignment: .center)
     }
 }
 

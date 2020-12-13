@@ -47,15 +47,13 @@ public struct NewMovementView: View {
     }
 
     public var body: some View {
-        NavigationView {
-            ZStack {
-                if self.viewModel.state.error != nil {
-                    self.errorView
-                } else {
-                    self.newMovementView
-                }
-                self.loadingView
+        ZStack {
+            if self.viewModel.state.error != nil {
+                self.errorView
+            } else {
+                self.newMovementView
             }
+            self.loadingView
         }.alert(isPresented: self.$viewModel.state.showDeleteAlert,
                 content: {
                     self.deleteAlert
@@ -64,19 +62,13 @@ public struct NewMovementView: View {
     }
 
     private var newMovementView: some View {
-        let dataResources = NewMovementViewInternalDataResources(
-            categories: self.viewModel.categories,
-            stores: self.viewModel.stores, customDataSectionTitle: self.viewModel.state.movementDetailTitle,
-            isIncome: self.isIncome
-        )
-        return NewMovementViewInternal(model: self.$viewModel.model,
-                                       dataResources: dataResources,
-                                       deleteAction: {
-                                           self.viewModel.setState(.askingForDelete)
-                                       })
-//            .navigationBarTitle(self.viewModel.state.navigationBarTitle)
-//            .navigationBarItems(leading: self.cancelButton,
-//                                trailing: self.saveButton)
+        return NewMovementContainerView(viewModel: self._viewModel,
+                                        deleteAction: {
+                                            self.viewModel.setState(.askingForDelete)
+                                        })
+            .frame(width: 500,
+                   height: 500,
+                   alignment: .center)
     }
 
     // MARK: - Navigation bar buttons
@@ -141,6 +133,9 @@ public struct NewMovementView: View {
     private var errorView: some View {
         GenericErrorView(title: L10n.couldnTExecuteTransaction,
                          error: self.viewModel.state.error)
+            .frame(width: 500,
+                   height: 500,
+                   alignment: .center)
     }
 }
 

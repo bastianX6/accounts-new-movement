@@ -11,13 +11,17 @@ import Foundation
 import NewMovementCommon
 import SwiftUI
 
-struct MovementTypeNewMovementView: View {
+struct NewMovementContainerView: View {
     @State var showLoading: Bool = false
     @ObservedObject var viewModel: NewMovementViewModel
     @EnvironmentObject var resolver: DependencyResolver
+    private var deleteAction: (() -> Void)?
 
-    init(viewModel: ObservedObject<NewMovementViewModel>) {
+    init(viewModel: ObservedObject<NewMovementViewModel>,
+         deleteAction: (() -> Void)? = nil)
+    {
         self._viewModel = viewModel
+        self.deleteAction = deleteAction
     }
 
     var body: some View {
@@ -48,7 +52,9 @@ struct MovementTypeNewMovementView: View {
                        minHeight: 0,
                        maxHeight: 50)
             }
+            .navigationTitle(self.viewModel.state.navigationBarTitle)
             .padding([.leading, .trailing], 10)
+            .background(Color.systemGray6)
 
             self.loadingView
         }
@@ -62,7 +68,8 @@ struct MovementTypeNewMovementView: View {
             isIncome: self.viewModel.state.isIncome
         )
         return NewMovementViewInternal(model: self.$viewModel.model,
-                                       dataResources: dataResources)
+                                       dataResources: dataResources,
+                                       deleteAction: self.deleteAction)
     }
 
     // MARK: - Loading view
@@ -108,7 +115,7 @@ struct MovementTypeNewMovementView_Previews: PreviewProvider {
     @ObservedObject static var viewModel: NewMovementViewModel = DataPreview.viewModel
 
     static var previews: some View {
-        MovementTypeNewMovementView(viewModel: self._viewModel)
+        NewMovementContainerView(viewModel: self._viewModel)
             .frame(width: 500,
                    height: 500,
                    alignment: .center)
