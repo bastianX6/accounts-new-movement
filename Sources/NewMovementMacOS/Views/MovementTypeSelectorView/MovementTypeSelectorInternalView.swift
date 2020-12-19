@@ -38,6 +38,7 @@ struct MovementTypeSelectorInternalView: View {
             self.showSheet = true
         }
         .background(Color.systemGray6)
+        .navigationTitle(L10n.add)
         .fullBackgroundColor(.systemGray6)
         .sheet(isPresented: self.$showSheet,
                onDismiss: {
