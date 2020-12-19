@@ -83,15 +83,15 @@ enum DataPreview {
     }
 
     private struct PreviewMovement: Movement {
-        var id: UUID = UUID()
+        var id = UUID()
         var name: String = ""
         var description: String = ""
         var amount: Float = 0
-        var date: Date = Date()
+        var date = Date()
         var isPaid: Bool = false
         var isPermanent: Bool = false
-        var storeId: UUID = UUID()
-        var categoryId: UUID = UUID()
+        var storeId = UUID()
+        var categoryId = UUID()
         var paymentId: UUID?
     }
 

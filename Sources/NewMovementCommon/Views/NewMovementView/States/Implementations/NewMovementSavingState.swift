@@ -1,28 +1,28 @@
 //
-//  NewMovementDeletingState.swift
+//  NewMovementSavingState.swift
 //
 //
-//  Created by Bastián Véliz Vega on 18-10-20.
+//  Created by Bastián Véliz Vega on 01-10-20.
 //
 
 import Combine
 import Foundation
 
-class NewMovementDeletingState: NewMovementViewBaseState {
+public class NewMovementSavingState: NewMovementViewBaseState {
     private weak var viewModel: NewMovementViewModel?
 
     var cancellables: [Cancellable] = []
 
-    init(viewModel: NewMovementViewModel?) {
+    public init(viewModel: NewMovementViewModel?) {
         super.init()
         self.viewModel = viewModel
         self.showLoading = true
     }
 
-    override func deleteAction() {
+    override public func saveAction() {
         self.cancellables.removeAll()
         guard let viewModel = self.viewModel else { return }
-        let cancellable = viewModel.deleteMovement()
+        let cancellable = viewModel.saveMovement()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let strongSelf = self else { return }

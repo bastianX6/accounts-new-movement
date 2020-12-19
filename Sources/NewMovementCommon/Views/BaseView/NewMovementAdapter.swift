@@ -2,25 +2,25 @@
 //  NewMovementAdapter.swift
 //
 //
-//  Created by Bastián Véliz Vega on 18-09-20.
+//  Created by Bastián Véliz Vega on 12-12-20.
 //
 
 import DataManagement
 import Foundation
 
-struct NewMovementAdapter: Movement {
-    let id: UUID
-    let name: String
-    let description: String
-    let amount: Float
-    let date: Date
-    let isPaid: Bool
-    let isPermanent: Bool
-    let storeId: UUID
-    let categoryId: UUID
-    let paymentId: UUID?
+public struct NewMovementAdapter: Movement {
+    public let id: UUID
+    public let name: String
+    public let description: String
+    public let amount: Float
+    public let date: Date
+    public let isPaid: Bool
+    public let isPermanent: Bool
+    public let storeId: UUID
+    public let categoryId: UUID
+    public let paymentId: UUID?
 
-    init(model: NewMovementViewInternal.DataModel) {
+    public init(model: NewMovementViewInternalDataModel) {
         self.id = model.id
         self.name = model.title
         self.description = model.comments

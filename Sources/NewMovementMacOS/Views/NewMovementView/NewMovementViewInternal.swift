@@ -9,9 +9,7 @@ import AccountsUI
 import SwiftUI
 import NewMovementCommon
 
-@available(macOS, unavailable)
-@available(watchOS, unavailable)
-@available(tvOS, unavailable)
+
 struct NewMovementViewInternal: View {
     @Binding var model: NewMovementViewInternalDataModel
     private let dataResources: NewMovementViewInternalDataResources

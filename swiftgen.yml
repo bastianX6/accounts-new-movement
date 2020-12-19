@@ -1,9 +1,13 @@
 strings:
   - inputs: Sources/NewMovement_iOS/Resources/es.lproj
     outputs:
-    - templateName: structured-swift5
+      templateName: structured-swift5
       output: Sources/NewMovement_iOS/Localization/Strings.swift
+  - inputs: Sources/NewMovementMacOS/Resources/es.lproj
+    outputs:
+      templateName: structured-swift5
+      output: Sources/NewMovementMacOS/Localization/Strings.swift
   - inputs: Sources/NewMovementCommon/Resources/es.lproj
     outputs:
-    - templateName: structured-swift5
+      templateName: structured-swift5
       output: Sources/NewMovementCommon/Localization/Strings.swift

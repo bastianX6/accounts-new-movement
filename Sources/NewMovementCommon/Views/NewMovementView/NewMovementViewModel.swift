@@ -10,26 +10,26 @@ import Combine
 import DataManagement
 import Foundation
 
-class NewMovementViewModel: ObservableObject {
+public class NewMovementViewModel: ObservableObject {
     // MARK: - UI management
 
-    @Published var model: NewMovementViewInternal.DataModel
-    @Published var state: NewMovementViewState = NewMovementViewBaseState()
+    @Published public var model: NewMovementViewInternalDataModel
+    @Published public var state: NewMovementViewState = NewMovementViewBaseState()
 
     private lazy var savingState: NewMovementViewState = NewMovementSavingState(viewModel: self)
     private lazy var errorState: NewMovementViewState = NewMovementErrorState(viewModel: self)
     private lazy var deletingState: NewMovementViewState = NewMovementDeletingState(viewModel: self)
     private var askForDeletingState: NewMovementViewState = NewMovementAskingForDeleteState()
-    private(set) lazy var endState = NewMovementEndState()
+    public private(set) lazy var endState = NewMovementEndState()
 
     private var dataSource: DataSourceModify
-    var isIncome: Bool = false {
+    public var isIncome: Bool = false {
         didSet {
             self.updateIsIncome()
         }
     }
 
-    var isEdition: Bool = false {
+    public var isEdition: Bool = false {
         didSet {
             self.updateIsEdition()
         }
@@ -38,19 +38,20 @@ class NewMovementViewModel: ObservableObject {
     private let incomeData: MovementResources
     private let expenditureData: MovementResources
 
-    var stores: [CategoryStoreModel] {
+    public var stores: [CategoryStoreModel] {
         return self.isIncome ? self.incomeData.stores : self.expenditureData.stores
     }
 
-    var categories: [CategoryStoreModel] {
+    public var categories: [CategoryStoreModel] {
         return self.isIncome ? self.incomeData.categories : self.expenditureData.categories
     }
 
-    init(model: NewMovementViewInternal.DataModel,
-         dataSource: DataSourceModify,
-         incomeData: MovementResources,
-         expenditureData: MovementResources,
-         onEnd: @escaping () -> Void) {
+    public init(model: NewMovementViewInternalDataModel,
+                dataSource: DataSourceModify,
+                incomeData: MovementResources,
+                expenditureData: MovementResources,
+                onEnd: @escaping () -> Void)
+    {
         self.model = model
         self.dataSource = dataSource
         self.incomeData = incomeData
@@ -58,12 +59,13 @@ class NewMovementViewModel: ObservableObject {
         self.endState.onEnd = onEnd
     }
 
-    convenience init(dataSource: DataSourceModify,
-                     incomeData: MovementResources,
-                     expenditureData: MovementResources,
-                     onEnd: @escaping () -> Void) {
-        let model = NewMovementViewInternal.DataModel(currentStore: UUID(),
-                                                      currentCategory: UUID())
+    public convenience init(dataSource: DataSourceModify,
+                            incomeData: MovementResources,
+                            expenditureData: MovementResources,
+                            onEnd: @escaping () -> Void)
+    {
+        let model = NewMovementViewInternalDataModel(currentStore: UUID(),
+                                                     currentCategory: UUID())
         self.init(model: model,
                   dataSource: dataSource,
                   incomeData: incomeData,
@@ -71,7 +73,7 @@ class NewMovementViewModel: ObservableObject {
                   onEnd: onEnd)
     }
 
-    func setState(_ state: NewMovementViewStateEnum) {
+    public func setState(_ state: NewMovementViewStateEnum) {
         switch state {
         case .saving:
             self.state = self.savingState
@@ -115,9 +117,10 @@ class NewMovementViewModel: ObservableObject {
         guard self.model.isNew else { return }
 
         if let currentStore = self.stores.first?.id,
-            let currentCategory = self.categories.first?.id {
-            self.model = NewMovementViewInternal.DataModel(currentStore: currentStore,
-                                                           currentCategory: currentCategory)
+           let currentCategory = self.categories.first?.id
+        {
+            self.model = NewMovementViewInternalDataModel(currentStore: currentStore,
+                                                          currentCategory: currentCategory)
         } else {
             fatalError("Can't init NewMovementViewModel with empty store and category arrays")
         }

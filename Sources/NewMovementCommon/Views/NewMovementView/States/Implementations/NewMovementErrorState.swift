@@ -7,14 +7,14 @@
 
 import Foundation
 
-class NewMovementErrorState: NewMovementViewBaseState {
+public class NewMovementErrorState: NewMovementViewBaseState {
     private weak var viewModel: NewMovementViewModel?
 
-    init(viewModel: NewMovementViewModel?) {
+    public init(viewModel: NewMovementViewModel?) {
         self.viewModel = viewModel
     }
 
-    override func cancelAction() {
+    override public func cancelAction() {
         self.viewModel?.setState(.end)
     }
 }

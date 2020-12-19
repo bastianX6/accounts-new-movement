@@ -59,7 +59,7 @@ struct MovementTypeSelectorInternalView: View {
     }
 
     private var newMovementView: some View {
-        let dataResources = NewMovementViewInternal.DataResources(
+        let dataResources = NewMovementViewInternalDataResources(
             categories: self.viewModel.categories,
             stores: self.viewModel.stores,
             customDataSectionTitle: self.viewModel.state.movementDetailTitle,

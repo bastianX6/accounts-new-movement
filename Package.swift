@@ -9,13 +9,17 @@ let package = Package(
     platforms: [
         .iOS(.v14),
         .tvOS(.v13),
-        .macOS(.v10_15),
+        .macOS(.v11),
         .watchOS(.v6),
     ],
     products: [
         .library(
             name: "NewMovement_iOS",
             targets: ["NewMovement_iOS"]
+        ),
+        .library(
+            name: "NewMovementMacOS",
+            targets: ["NewMovementMacOS"]
         ),
         .library(
             name: "NewMovementCommon",
@@ -62,6 +66,21 @@ let package = Package(
         .testTarget(
             name: "NewMovement.iOS.Tests",
             dependencies: ["NewMovement_iOS"]
+        ),
+        // NewMovement_macOS
+        .target(
+            name: "NewMovementMacOS",
+            dependencies: [
+                "DataManagement",
+                "AccountsUI",
+                "DependencyResolver",
+                "NewMovementCommon",
+            ],
+            resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "NewMovement.macOS.Tests",
+            dependencies: ["NewMovementMacOS"]
         ),
     ]
 )

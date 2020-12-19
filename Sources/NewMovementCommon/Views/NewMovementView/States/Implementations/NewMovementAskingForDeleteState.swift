@@ -7,8 +7,8 @@
 
 import Foundation
 
-class NewMovementAskingForDeleteState: NewMovementViewBaseState {
-    override init() {
+public class NewMovementAskingForDeleteState: NewMovementViewBaseState {
+    override public init() {
         super.init()
         self.showDeleteAlert = true
     }
