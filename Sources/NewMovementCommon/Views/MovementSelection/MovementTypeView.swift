@@ -70,7 +70,7 @@ struct MovementTypeView_Previews: PreviewProvider {
                 .environment(\.sizeCategory, .large)
 
             MovementTypeView(expenditureAction: {}, incomeAction: {})
-                .background(Color.systemGray2)
+                .background(Color.systemGray6)
                 .environment(\.colorScheme, .dark)
         }
     }

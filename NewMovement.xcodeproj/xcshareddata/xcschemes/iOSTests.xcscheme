@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1220"
+   LastUpgradeVersion = "1230"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "NewMovement.iOS.Tests"
                BuildableName = "NewMovement.iOS.Tests"
                BlueprintName = "NewMovement.iOS.Tests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "NewMovementCommonTests.iOS"
+               BuildableName = "NewMovementCommonTests.iOS"
+               BlueprintName = "NewMovementCommonTests.iOS"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,9 +71,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NewMovementCommonTests"
-               BuildableName = "NewMovementCommonTests"
-               BlueprintName = "NewMovementCommonTests"
+               BlueprintIdentifier = "NewMovementCommonTests.iOS"
+               BuildableName = "NewMovementCommonTests.iOS"
+               BlueprintName = "NewMovementCommonTests.iOS"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -82,6 +96,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "NewMovement.iOS.Tests"
+            BuildableName = "NewMovement.iOS.Tests"
+            BlueprintName = "NewMovement.iOS.Tests"
+            ReferencedContainer = "container:">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

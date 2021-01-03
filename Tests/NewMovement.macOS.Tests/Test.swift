@@ -7,7 +7,7 @@
 
 import Foundation
 
-@testable import NewMovement_macOS
+@testable import NewMovementMacOS
 import XCTest
 
 final class Tests: XCTestCase {
