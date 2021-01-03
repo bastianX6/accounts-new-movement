@@ -2,7 +2,7 @@
 //  MovementTypeCardTests.swift
 //
 //
-//  Created by Bastián Véliz Vega on 20-12-20.
+//  Created by Bastián Véliz Vega on 03-01-21.
 //
 
 import Foundation
@@ -26,7 +26,6 @@ final class MovementTypeCardTests: QuickSpec {
                 view = MovementTypeCard(systemImageName: "paperplane.fill",
                                         imageTintColor: .indigo,
                                         title: "A title")
-                    .frameFromSize(self.referenceSize)
                     .eraseToAnyView()
             }
 
@@ -35,14 +34,14 @@ final class MovementTypeCardTests: QuickSpec {
                     view = view
                         .environment(\.colorScheme, .light)
                         .eraseToAnyView()
-                    expect(view).to(haveValidSnapshot(as: .image))
+                    expect(view).to(haveValidSnapshot(as: .image(size: self.referenceSize)))
                 }
 
                 it("should have the correct layout on dark mode") {
                     view = view
                         .environment(\.colorScheme, .dark)
                         .eraseToAnyView()
-                    expect(view).to(haveValidSnapshot(as: .image))
+                    expect(view).to(haveValidSnapshot(as: .image(size: self.referenceSize)))
                 }
             }
         }

@@ -7,6 +7,7 @@
 
 import DataManagement
 import SwiftUI
+import NewMovementCommon
 
 /// New movement type selector view
 public struct MovementTypeSelectorView: View {

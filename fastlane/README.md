@@ -16,9 +16,9 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios ios_all
+### ios all_checks
 ```
-fastlane ios ios_all
+fastlane ios all_checks
 ```
 All iOS lanes
 ### ios run_all_test_ios
@@ -34,6 +34,30 @@ Calculate the code coverage for iOS packages
 ### ios lint
 ```
 fastlane ios lint
+```
+Lint all files
+
+----
+
+## Mac
+### mac all_checks
+```
+fastlane mac all_checks
+```
+All macOS lanes
+### mac run_all_test_macos
+```
+fastlane mac run_all_test_macos
+```
+Run all test for macOS modules
+### mac coverage_macos
+```
+fastlane mac coverage_macos
+```
+Calculate the code coverage for macOS packages
+### mac lint
+```
+fastlane mac lint
 ```
 Lint all files
 

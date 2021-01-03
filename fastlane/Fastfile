@@ -17,8 +17,8 @@ default_platform(:ios)
 
 platform :ios do
   desc "All iOS lanes"
-  lane :ios_all do
-    sh("mkdir -p ../sonar-reports")
+  lane :all_checks do
+    sh("mkdir -p ../sonar-reports/iOS")
     lint
     run_all_test_ios
     coverage_ios
@@ -29,10 +29,10 @@ platform :ios do
     run_tests(
       project: "NewMovement.xcodeproj",
       scheme: "iOSTests",
-      sdk: "iphonesimulator14.2",
-      device: "iPhone 8 (14.2)",
+      sdk: "iphonesimulator14.3",
+      device: "iPhone 8 (14.3)",
       derived_data_path: "./DerivedData",
-      output_directory: "sonar-reports",
+      output_directory: "sonar-reports/iOS",
       clean: true,
     )
   end
@@ -42,7 +42,7 @@ platform :ios do
     slather(
       scheme: "iOSTests",
       proj: "NewMovement.xcodeproj",
-      output_directory: "sonar-reports",
+      output_directory: "sonar-reports/iOS",
       cobertura_xml: "true",
       build_directory: "./DerivedData",
       sonarqube_xml: true,
@@ -59,8 +59,59 @@ platform :ios do
   desc "Lint all files"
   lane :lint do
     swiftlint(
-      output_file: "sonar-reports/NewMovement-swiftlint.txt",
+      output_file: "sonar-reports/iOS/NewMovement-swiftlint.txt",
       ignore_exit_status: true
     )
   end
 end
+
+platform :mac do
+
+  desc "All macOS lanes"
+  lane :all_checks do
+    sh("mkdir -p ../sonar-reports/macOS")
+    lint
+    run_all_test_macos
+    coverage_macos
+  end
+
+  desc "Run all test for macOS modules"
+  lane :run_all_test_macos do
+    run_tests(
+      project: "NewMovement.xcodeproj",
+      scheme: "macOSTests",
+      destination: "'platform=macOS, arch=x86_64'",
+      derived_data_path: "./DerivedData",
+      output_directory: "sonar-reports/macOS",
+      clean: true,
+    )
+  end
+
+  desc "Calculate the code coverage for macOS packages"
+  lane :coverage_macos do
+    slather(
+      scheme: "macOSTests",
+      proj: "NewMovement.xcodeproj",
+      output_directory: "sonar-reports/macOS",
+      cobertura_xml: "true",
+      build_directory: "./DerivedData",
+      sonarqube_xml: true,
+      cobertura_xml: false,
+      ignore: [
+        "*/Package.swift",
+        "DerivedData/*",
+        "*/Tests/*"
+      ],
+      source_directory: "./Sources"
+    )
+  end
+
+  desc "Lint all files"
+  lane :lint do
+    swiftlint(
+      output_file: "sonar-reports/macOS/NewMovement-swiftlint.txt",
+      ignore_exit_status: true
+    )
+  end
+end
+

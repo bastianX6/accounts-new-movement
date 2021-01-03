@@ -6,14 +6,14 @@
 //
 
 import Foundation
-
-@testable import NewMovementCommon
 import Nimble
 import Quick
 import SnapshotTesting
 import SnapshotTesting_Nimble
 import SwiftUI
 import XCTest
+
+@testable import NewMovementCommon
 
 final class MovementTypeViewTests: QuickSpec {
     private let referenceSize = ViewImageConfig.iPhoneX.size!

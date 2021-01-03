@@ -11,9 +11,9 @@ import AccountsUI
 
 /// Contains all the data required by NewMovementView
 public struct NewMovementViewDataModel {
-    let dataSource: DataSourceModify
-    let incomeData: MovementResources
-    let expenditureData: MovementResources
+    public let dataSource: DataSourceModify
+    public let incomeData: MovementResources
+    public let expenditureData: MovementResources
 
     /// Default initializer
     /// - Parameters:
