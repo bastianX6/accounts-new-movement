@@ -102,7 +102,10 @@ let package = Package(
             name: "NewMovement.iOS.Tests",
             dependencies: [
                 "NewMovement_iOS",
+                "Quick",
+                "Nimble",
                 "SnapshotTesting",
+                "SnapshotTesting-Nimble",
             ]
         ),
         // NewMovement_macOS

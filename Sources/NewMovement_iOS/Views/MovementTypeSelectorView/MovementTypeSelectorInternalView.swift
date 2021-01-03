@@ -55,7 +55,7 @@ struct MovementTypeSelectorInternalView: View {
                        }
                    }
                    .accentColor(self.resolver.appearance.accentColor)
-        })
+               })
     }
 
     private var newMovementView: some View {
