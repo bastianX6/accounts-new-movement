@@ -63,7 +63,7 @@ let package = Package(
             dependencies: [
                 "NewMovementCommon",
                 "Quick",
-                "Nimble"
+                "Nimble",
             ]
         ),
         .testTarget(
@@ -86,7 +86,6 @@ let package = Package(
                 "SnapshotTesting-Nimble",
             ]
         ),
-
 
         // NewMovement_iOS
         .target(
