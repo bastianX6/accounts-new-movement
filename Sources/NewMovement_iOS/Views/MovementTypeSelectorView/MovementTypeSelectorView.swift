@@ -6,6 +6,7 @@
 //
 
 import DataManagement
+import NewMovementCommon
 import SwiftUI
 
 /// New movement type selector view

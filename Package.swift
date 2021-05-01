@@ -36,6 +36,17 @@ let package = Package(
         .package(name: "DataManagement",
                  url: "https://github.com/bastianX6/accounts-data-management",
                  .upToNextMinor(from: "1.0.2")),
+        .package(name: "SnapshotTesting",
+                 url: "https://github.com/pointfreeco/swift-snapshot-testing.git",
+                 from: "1.8.1"),
+        .package(name: "SnapshotTesting-Nimble",
+                 url: "https://github.com/bastianX6/swift-snapshot-testing-nimble.git",
+                 from: "0.3.0"),
+        .package(url: "https://github.com/Quick/Nimble.git",
+                 .upToNextMajor(from: "9.0.0")),
+        .package(url: "https://github.com/Quick/Quick.git",
+                 .upToNextMajor(from: "3.0.0")),
+
     ],
     targets: [
         // NewMovementCommon
@@ -49,7 +60,31 @@ let package = Package(
         ),
         .testTarget(
             name: "NewMovementCommonTests",
-            dependencies: ["NewMovementCommon"]
+            dependencies: [
+                "NewMovementCommon",
+                "Quick",
+                "Nimble",
+            ]
+        ),
+        .testTarget(
+            name: "NewMovementCommonTests.macOS",
+            dependencies: [
+                "NewMovementCommon",
+                "Quick",
+                "Nimble",
+                "SnapshotTesting",
+                "SnapshotTesting-Nimble",
+            ]
+        ),
+        .testTarget(
+            name: "NewMovementCommonTests.iOS",
+            dependencies: [
+                "NewMovementCommon",
+                "Quick",
+                "Nimble",
+                "SnapshotTesting",
+                "SnapshotTesting-Nimble",
+            ]
         ),
 
         // NewMovement_iOS
@@ -65,7 +100,13 @@ let package = Package(
         ),
         .testTarget(
             name: "NewMovement.iOS.Tests",
-            dependencies: ["NewMovement_iOS"]
+            dependencies: [
+                "NewMovement_iOS",
+                "Quick",
+                "Nimble",
+                "SnapshotTesting",
+                "SnapshotTesting-Nimble",
+            ]
         ),
         // NewMovement_macOS
         .target(
@@ -80,7 +121,10 @@ let package = Package(
         ),
         .testTarget(
             name: "NewMovement.macOS.Tests",
-            dependencies: ["NewMovementMacOS"]
+            dependencies: [
+                "NewMovementMacOS",
+                "SnapshotTesting",
+            ]
         ),
     ]
 )
